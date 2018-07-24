@@ -10,7 +10,7 @@ export class AboutPage {
   constructor(public navCtrl: NavController) {
 
   }
-  GoNew() {
-    this.navCtrl.push(ContactPage);
+  GoNew(title) {
+    this.navCtrl.push(ContactPage, { title: title });
   }
 }

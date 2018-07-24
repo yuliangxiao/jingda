@@ -9,11 +9,11 @@
 
 <ion-content padding id="about">
     <nav id="nav">
-        <span style="background: #5eab08">
+        <span style="background: #5eab08" (click)="GoNew('发车(提货)')">
             <i class="ion-clipboard"></i>
             <h6>发车(提货)</h6>
         </span>
-        <span style="background: #224660" (click)="GoNew()">
+        <span style="background: #224660" (click)="GoNew('到达')">
             <i class="ion-heart"></i>
             <h6>到达</h6>
         </span>
