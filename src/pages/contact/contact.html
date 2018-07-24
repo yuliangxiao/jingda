@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            到达
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list no-lines>
+        <ion-item>
+            <ion-label style="color: purple">号码</ion-label>
+            <ion-input type="text"></ion-input>
+            <ion-select placeholder="派车单1">
+                <ion-option value="0">派车单1</ion-option>
+                <ion-option>派车单2</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <button ion-button large>条形码</button>
+            <button ion-button large>二维码</button>
+            <!-- <ion-select placeholder="到达1">
+                <ion-option value="0">到达1</ion-option>
+                <ion-option>到达1</ion-option>
+            </ion-select> -->
+        </ion-item>
+        <ion-item>
+            <ion-label style="flex:0.5">待上传单数:</ion-label>
+            <ion-label style="color: red">16</ion-label>
+        </ion-item>
+        <ion-item><button ion-button outline class="button-block" large>点击拍照</button></ion-item>
+        <ion-item class="item_title_height">
+            <ion-label style="flex:0.2">号码:</ion-label>
+            <ion-label style="flex:0.5">123456</ion-label>
+            <ion-label style="flex:0.3;float: right;"><button ion-button round color="danger" small>修改</button></ion-label>
+        </ion-item>
+        <ion-item class="item_title_height">
+            <ion-label style="flex:0.2">类型:</ion-label>
+            <ion-label style="flex:0.5">客户签收单</ion-label>
+            <ion-label style="flex:0.3;float: right;"><button ion-button round color="danger" small>删除</button></ion-label>
+        </ion-item>
+        <ion-item class="item_title_height">
+            <ion-label style="flex:0.2">标题:</ion-label>
+            <ion-label style="flex:0.5">签收</ion-label>
+            <ion-label style="flex:0.3;float: right;"></ion-label>
+        </ion-item>
+    </ion-list>
+
+</ion-content>
