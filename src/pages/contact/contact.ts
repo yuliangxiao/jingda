@@ -101,43 +101,44 @@ export class ContactPage {
   select_img() {
     $("#file").click();
   }
-  showAlert(content: string) {
+  showAlert(type: number, content: string) {
     let alert = this.alertCtrl.create({
-      title: '警告',
+      title: type == 0 ? '提示' : '警告',
       subTitle: content,
       buttons: ['确定']
     });
     alert.present();
   }
+
   sub_order() {
     if (this.blid == 0) {
-      this.showAlert("请选择单子!");
+      this.showAlert(1, "请选择单子!");
       return false;
     }
     if ($(".img_item").length == 0) {
-      this.showAlert("请选择图片!");
+      this.showAlert(1, "请选择图片!");
       return false;
     }
     let loading = this.loadingCtrl.create({
       content: '请等待'
     });
     loading.present();
-
     $(".img_item img").each((i, v) => {
       $.ajax({
         url: 'http://127.0.0.1:8888/InsertImg?id=' + this.blid,
         type: 'post',
-        dataType: 'json',
         async: false,
-        data: { image: $(v).attr("src") },
-        success: function (data, status) {
-          console.log(data)
+        data: { img: $(v).attr('src') },
+        success: function (data) {
+
         },
-        fail: function (err, status) {
-          console.log(err)
+        error: function (data, status) {
+          console.log("error");
         }
       });
+
     });
     loading.dismiss();
+    this.showAlert(0, "保存成功!");
   }
 }
