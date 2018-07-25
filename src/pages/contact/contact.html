@@ -10,10 +10,14 @@
     <ion-list no-lines>
         <ion-item>
             <ion-label style="color: purple">号码</ion-label>
-            <ion-input type="text"></ion-input>
-            <ion-select placeholder="选择类型">
-                <ion-option value="0">派车单1</ion-option>
-                <ion-option>派车单2</ion-option>
+            <ion-input type="text" [(ngModel)]="input_txt"></ion-input>
+            <ion-select [(ngModel)]="typeTxt" placeholder="选择类型" title="阿斯顿发" (ngModelChange)="switchType()">
+                <ion-option value="1">提货</ion-option>
+                <ion-option value="2">发车</ion-option>
+                <ion-option value="3">中转</ion-option>
+                <ion-option value="4">到达</ion-option>
+                <ion-option value="5">签收</ion-option>
+                <ion-option value="6">异常</ion-option>
             </ion-select>
         </ion-item>
 
