@@ -29,9 +29,13 @@
                 <ion-option>到达1</ion-option>
             </ion-select> -->
         </ion-item>
+
         <ion-item>
             <ion-label style="flex:0.5">待上传单数:</ion-label>
             <ion-label style="color: red">16</ion-label>
+        </ion-item>
+        <ion-item id="img_list">
+
         </ion-item>
         <ion-item><button ion-button outline class="button-block" large (click)="select_img()">点击拍照</button><input type="file" id="file" style="display: none;" accept="image/*" capture="camera"></ion-item>
         <ion-item class="item_title_height">
@@ -50,5 +54,5 @@
             <ion-label style="flex:0.3;float: right;"></ion-label>
         </ion-item>
     </ion-list>
-    <button ion-button class="button-block" style="margin:0 2% !important;width: 96%" large>上传</button>
+    <button ion-button class="button-block" style="margin:0 2% !important;width: 96%" large (click)="sub_order()">上传</button>
 </ion-content>

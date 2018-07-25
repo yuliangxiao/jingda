@@ -10,4 +10,16 @@ page-contact {
     .item_title_height {
         height: 30px !important;
     }
+    #img_list {
+        height: 70px !important;
+        .img_item {
+            margin-right: 5px;
+            width: 70px;
+            height: 70px;
+        }
+        img {
+            width: 70px;
+            height: 70px;
+        }
+    }
 }
