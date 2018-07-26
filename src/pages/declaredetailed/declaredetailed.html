@@ -13,7 +13,7 @@
             <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
         </ion-fab-list>
     </ion-fab>
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="请输入检索条件,最多显示15条记录"></ion-searchbar>
     <div class="overflow_div">
         <table>
             <thead>
@@ -32,29 +32,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <ion-checkbox [(checked)]="check_all"></ion-checkbox>
-                    </td>
-                    <td>HBD212315611</td>
-                    <td>JDN161616</td>
-                    <td>2018-12-12</td>
-                    <td>张三</td>
-                    <td>DKJ133/DJIJF4455</td>
-                    <td>中航</td>
-                    <td>正常</td>
+                <tr *ngIf="is_first">
+                    <td colspan="5">没有记录</td>
                 </tr>
-                <tr>
+                <tr *ngFor="let item of items">
                     <td>
                         <ion-checkbox [(checked)]="check_all"></ion-checkbox>
                     </td>
-                    <td>HBD212315611</td>
-                    <td>JDN161616</td>
-                    <td>2018-12-12</td>
-                    <td>张三</td>
-                    <td>DKJ133/DJIJF4455</td>
-                    <td>中航</td>
-                    <td>正常</td>
+                    <td>{{item.MBLNo}}</td>
+                    <td>{{item.HBLNo}}</td>
+                    <td>{{item.ETD}}</td>
+                    <td>{{item.StaffName}}</td>
+                    <td>{{item.Vsl}}/{{item.Voy}}</td>
+                    <td>{{item.CorpCN}}</td>
+                    <td>{{item.BLStatus}}</td>
                 </tr>
             </tbody>
         </table>
