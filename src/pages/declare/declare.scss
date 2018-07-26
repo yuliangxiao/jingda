@@ -1,0 +1,20 @@
+page-declare {
+    #nav span {
+        float: left;
+        height: 150px;
+        width: 46%;
+        margin: 2% 2%;
+        border-radius: 10px;
+        padding-top: 20px;
+        text-align: center;
+    }
+    #nav i {
+        width: 60px;
+        color: #fff;
+        font-size: 4em;
+    }
+    #nav h6 {
+        margin-top: 0.6rem;
+        color: #fff;
+    }
+}

@@ -1,0 +1,62 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            {{params}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-fab right bottom>
+        <button ion-fab color="light"><ion-icon name="arrow-dropleft"></ion-icon></button>
+        <ion-fab-list side="left">
+            <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+            <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+        </ion-fab-list>
+    </ion-fab>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <div class="overflow_div">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 40px;">
+                        <ion-checkbox [(ngModel)]="check_all"></ion-checkbox>
+                    </th>
+                    <th>客户</th>
+                    <th>提单号</th>
+                    <th>分单号</th>
+                    <th>ETD</th>
+                    <th>客服员</th>
+                    <th>船名/航次</th>
+                    <th>船公司</th>
+                    <th>状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <ion-checkbox [(checked)]="check_all"></ion-checkbox>
+                    </td>
+                    <td>HBD212315611</td>
+                    <td>JDN161616</td>
+                    <td>2018-12-12</td>
+                    <td>张三</td>
+                    <td>DKJ133/DJIJF4455</td>
+                    <td>中航</td>
+                    <td>正常</td>
+                </tr>
+                <tr>
+                    <td>
+                        <ion-checkbox [(checked)]="check_all"></ion-checkbox>
+                    </td>
+                    <td>HBD212315611</td>
+                    <td>JDN161616</td>
+                    <td>2018-12-12</td>
+                    <td>张三</td>
+                    <td>DKJ133/DJIJF4455</td>
+                    <td>中航</td>
+                    <td>正常</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ion-content>

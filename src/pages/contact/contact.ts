@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { AlertController, LoadingController } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @Component({
   selector: 'page-contact',
@@ -16,11 +17,30 @@ export class ContactPage {
   public input_txt: Text;
   public file: any;
   public blid: number;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  private options: any;
+  public img_list: Array<string>;
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private http: Http,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
+    private camera: Camera) {
     this.params = this.navParams.get('title');
     this.init_html();
     this.blid = 0;
+
+    // 设置选项
+    const options: CameraOptions = {
+      quality: 100,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    this.options = options;
   }
+
   switchType() {
     this.http.request('http://127.0.0.1:8888/GetBLNo?id=' + this.typeTxt)
       .toPromise()
@@ -30,8 +50,9 @@ export class ContactPage {
       })
       .catch(err => { console.error(err) });
   }
- 
+
   init_html() {
+
     // $(function () {
     //   // 允许上传的图片类型
     //   var allowTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
@@ -99,7 +120,15 @@ export class ContactPage {
     // });
   }
   select_img() {
-    $("#file").click();
+    // 获取图片
+    this.camera.getPicture(this.options).then((imageData) => {
+      // 获取成功
+      let base64Image = 'data:image/jpeg;base64,' + imageData;
+      this.img_list.push(base64Image);
+      alert(this.img_list.length);
+    }, (err) => {
+      console.log('获取图片失败');
+    });
   }
   showAlert(type: number, content: string) {
     let alert = this.alertCtrl.create({
@@ -141,4 +170,5 @@ export class ContactPage {
     loading.dismiss();
     this.showAlert(0, "保存成功!");
   }
+
 }

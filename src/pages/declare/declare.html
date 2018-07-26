@@ -1,0 +1,29 @@
+<link href="http://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            陆运派车
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding id="about">
+    <nav id="nav">
+        <span style="background: #5eab08" (click)="GoNew('空运出口')">
+            <i class="ion-clipboard"></i>
+            <h6>空运出口</h6>
+        </span>
+        <span style="background: #224660" (click)="GoNew('空运进口')">
+            <i class="ion-heart"></i>
+            <h6>空运进口</h6>
+        </span>
+        <span style="background: #228776" (click)="GoNew('海运出口')">
+            <i class="ion-clock"></i>
+            <h6>海运出口</h6>
+        </span>
+        <span style="background: #0e8f52" (click)="GoNew('海运进口')"> 
+            <i class="ion-leaf"></i>
+            <h6>海运进口</h6>
+        </span>
+    </nav>
+</ion-content>
