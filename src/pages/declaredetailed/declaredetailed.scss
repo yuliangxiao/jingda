@@ -1,28 +1,50 @@
 page-declaredetailed {
-    table {
-        table-layout: fixed;
-        width: 100%;
-        th {
-            width: 100px;
-            height: 30px;
-            border: solid 1px #f2f2f2;
+    $color-black: #000;
+    ion-content {
+        background: #f9f9f9 !important;
+    }
+    ion-card {
+        .row_title {
+            height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+            padding: 0 10px;
         }
-        thead>tr:first-child {
-            width: 40px !important;
+        .row_title_last {
+            font-size: 16px;
+            color: #cc9d45;
+            text-align: right;
         }
-        tbody td {
-            text-align: center;
+        .item-block {
+            min-height: 0.4rem;
+            .input-wrapper {
+                height: 25px;
+                font-size: 16px;
+                color: #868686;
+            }
         }
-        td {
+        ion-item {
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: nowrap;
-            height: 30px;
-            border: solid 1px #f2f2f2;
+            white-space: nowrap
+        }
+        .color_black .label {
+            color: $color-black !important;
+        }
+        img {
+            width: 70%;
+            height: 70%;
+            margin-left: 15%;
         }
     }
-    .overflow_div {
-        width: 100%;
-        overflow: auto;
+    ion-footer {
+        ion-col {
+            padding: 0 !important;
+            text-align: center;
+            color: #488aff;
+        }
+        ion-icon {
+            font-size: 1.8em;
+        }
     }
 }

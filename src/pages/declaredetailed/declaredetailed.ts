@@ -1,9 +1,13 @@
-///<reference path="../../assets/js/jquery.d.ts"/>
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
-import { AlertController, LoadingController } from 'ionic-angular';
+import { AlertController, LoadingController, ModalController, ToastController } from 'ionic-angular';
+
+import { SearchPage } from './search';
+import { server } from '../../assets/js/server_path'
+
+import { ShowToast } from '../../assets/js/common'
 
 @Component({
   selector: 'page-declaredetailed',
@@ -12,34 +16,69 @@ import { AlertController, LoadingController } from 'ionic-angular';
 
 export class DeclaredetailedPage {
   public params: Text;
-  public typeTxt: any;
-  public input_txt: Text;
-  public file: any;
-  public blid: number;
-  public items: any;
+  public items = [];
   public is_first: boolean;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  public count: number = 1;
+  private keyword: string = '';
+  private is_loading: boolean = false;
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private http: Http,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
+    public modalCtrl: ModalController,
+    public toastCtrl: ToastController) {
+
     this.params = this.navParams.get('title');
     this.is_first = false;
+    this.request_url();
+
+  }
+
+  doInfinite(infiniteScroll) {
+    setTimeout(() => {
+      if (!this.is_loading) {
+        this.count = this.count + 1;
+        this.request_url();
+        infiniteScroll.complete();
+      }
+    }, 500);
   }
   getItems(ev: any) {
     let val = ev.target.value;
-    if (val && val.trim() != '') {
-      this.http.request('http://127.0.0.1:8888/GetBLList?keyword=' + val)
-        .toPromise()
-        .then(res => {
-          this.items = res.json();
-          if (this.items.length == 0) {
-            this.is_first = true;
-          }
-          else {
-            this.is_first = false;
-          }
-        })
-        .catch(err => { console.error(err) });
+    if (val != this.keyword) {
+      if (!this.is_loading) {
+        this.items = [];
+        this.count = 1;
+        this.keyword = val;
+        this.request_url();
+      }
     }
-    else{
-      this.items = null;
-    }
+
+  }
+  request_url() {
+    this.is_loading = true;
+    this.http.request(server + 'GetBLList?keyword=' + this.keyword + '&count=' + this.count)
+      .toPromise()
+      .then(res => {
+        if (res.json().length > 0) {
+          res.json().forEach(element => {
+            this.items.push(element);
+          });
+        }
+        else {
+          new ShowToast(this.toastCtrl).presentToast('没有更多数据了');
+          this.count = this.count - 1;
+        }
+        this.is_loading = false;
+      })
+      .catch(err => { console.error(err) });
+  }
+  go_search() {
+    let profileModal = this.modalCtrl.create(SearchPage);
+    profileModal.onDidDismiss(data => {
+      console.log(data);
+    });
+    profileModal.present();
   }
 }

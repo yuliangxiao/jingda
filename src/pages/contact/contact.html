@@ -37,7 +37,7 @@
         <ion-item id="img_list">
             <div class="img_item Img_File_Item" *ngFor="let item of img_list"><img src="{{item}}" /><span class="delete"></span></div>
         </ion-item>
-        <ion-item><button ion-button outline class="button-block" large (click)="select_img()">点击拍照</button><input type="file" id="file" style="display: none;" accept="image/*" capture="camera"></ion-item>
+        <ion-item><button ion-button outline class="button-block" large (click)="select_img()">选择照片</button><input type="file" id="file" style="display: none;" accept="image/*" capture="camera"></ion-item>
         <ion-item class="item_title_height">
             <ion-label style="flex:0.2">号码:</ion-label>
             <ion-label style="flex:0.5">123456</ion-label>

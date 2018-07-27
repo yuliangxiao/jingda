@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start (click)="dismiss_no()">
+            <button ion-button icon-only>
+                      <ion-icon name="arrow-back"></ion-icon>
+                    </button>
+        </ion-buttons>
+        <ion-title>
+            条件
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list no-lines>
+        <ion-list-header>
+            业务状态
+        </ion-list-header>
+        <ion-item>
+            <ion-row>
+                <ion-col col-3><button [ngClass]="{'button_checked':param1}" (click)="param1=btn_click(param1)" small ion-button outline>正&nbsp;&nbsp;操&nbsp;&nbsp;作</button></ion-col>
+                <ion-col col-3><button [ngClass]="{'button_checked':param2}" (click)="param2=btn_click(param2)" small ion-button outline>预&nbsp;&nbsp;提&nbsp;&nbsp;交</button></ion-col>
+                <ion-col col-3><button [ngClass]="{'button_checked':param3}" (click)="param3=btn_click(param3)" small ion-button outline>已&nbsp;&nbsp;提&nbsp;&nbsp;交</button></ion-col>
+                <ion-col col-3><button [ngClass]="{'button_checked':param4}" (click)="param4=btn_click(param4)" small ion-button outline>已&nbsp;&nbsp;审&nbsp;&nbsp;核</button></ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-list-header>
+            业务类型
+        </ion-list-header>
+        <ion-item>
+            <ion-row>
+                <ion-col col-3><button [ngClass]="{'button_checked':param5}" (click)="param5=btn_click(param5)" small ion-button outline>海运出口</button></ion-col>
+                <ion-col col-3><button [ngClass]="{'button_checked':param6}" (click)="param6=btn_click(param6)" small ion-button outline>海运进口</button></ion-col>
+                <ion-col col-3><button [ngClass]="{'button_checked':param7}" (click)="param7=btn_click(param7)" small ion-button outline>空运出口</button></ion-col>
+                <ion-col col-3><button [ngClass]="{'button_checked':param8}" (click)="param8=btn_click(param8)" small ion-button outline>空运进口</button></ion-col>
+            </ion-row>
+        </ion-item>
+    </ion-list>
+    <button ion-button block>确&nbsp;&nbsp;定</button>
+</ion-content>

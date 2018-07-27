@@ -7,47 +7,59 @@
 </ion-header>
 <ion-content>
     <ion-fab right bottom>
-        <button ion-fab color="light"><ion-icon name="arrow-dropleft"></ion-icon></button>
-        <ion-fab-list side="left">
-            <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
-            <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+        <button ion-fab color="secondary"><ion-icon name="arrow-dropup-circle"></ion-icon></button>
+        <ion-fab-list side="top">
+            <button ion-fab color="primary">新</button>
+            <button ion-fab color="primary">收</button>
+            <button ion-fab color="primary">申</button>
+            <button ion-fab color="primary">验</button>
+            <button ion-fab color="primary">通</button>
+            <button ion-fab color="primary">全</button>
         </ion-fab-list>
     </ion-fab>
-    <ion-searchbar (ionInput)="getItems($event)" placeholder="请输入检索条件,最多显示15条记录"></ion-searchbar>
-    <div class="overflow_div">
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 40px;">
-                        <ion-checkbox [(ngModel)]="check_all"></ion-checkbox>
-                    </th>
-                    <th>客户</th>
-                    <th>提单号</th>
-                    <th>分单号</th>
-                    <th>ETD</th>
-                    <th>客服员</th>
-                    <th>船名/航次</th>
-                    <th>船公司</th>
-                    <th>状态</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngIf="is_first">
-                    <td colspan="5">没有记录</td>
-                </tr>
-                <tr *ngFor="let item of items">
-                    <td>
-                        <ion-checkbox [(checked)]="check_all"></ion-checkbox>
-                    </td>
-                    <td>{{item.MBLNo}}</td>
-                    <td>{{item.HBLNo}}</td>
-                    <td>{{item.ETD}}</td>
-                    <td>{{item.StaffName}}</td>
-                    <td>{{item.Vsl}}/{{item.Voy}}</td>
-                    <td>{{item.CorpCN}}</td>
-                    <td>{{item.BLStatus}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="请输入检索条件"></ion-searchbar>
+
+    <ion-card *ngFor="let item of items">
+        <ion-row class="row_title">
+            <ion-col col-9>
+                {{item.CorpCN}}
+            </ion-col>
+            <ion-col class="row_title_last">
+                {{item.BLStatus}}
+            </ion-col>
+        </ion-row>
+        <hr />
+        <ion-row>
+            <ion-col col-4>
+                <img src="assets/imgs/touxiang.jpeg">
+            </ion-col>
+            <ion-col>
+                <ion-item class="color_black">{{item.MBLNo}}</ion-item>
+                <ion-item>{{item.Vsl}}/{{item.Voy}}</ion-item>
+                <ion-item>{{item.ETD | date:'yyyy-MM-dd'}}</ion-item>
+                <ion-item>20GP*1</ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-row>
+            <ion-col (click)="go_search()">
+                <ion-icon name="funnel"></ion-icon><br>
+                <label>筛选</label>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="switch"></ion-icon><br>
+                <label>业务日期</label>
+            </ion-col>
+            <ion-col>
+                <ion-icon name="time"></ion-icon><br>
+                <label>创建日期</label>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>
