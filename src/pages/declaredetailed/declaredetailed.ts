@@ -16,12 +16,19 @@ import { ShowToast, ShowActionSheet } from '../../assets/js/common'
 })
 
 export class DeclaredetailedPage {
-  public params: Text;
   public items = [];
   public is_first: boolean;
   public count: number = 1;
   private keyword: string = '';
   private is_loading: boolean = false;
+
+  private param1: boolean;
+  private param2: boolean;
+  private param3: boolean;
+  private param4: boolean;
+  private param9: boolean;
+  private sheetname: string;
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private http: Http,
@@ -31,7 +38,6 @@ export class DeclaredetailedPage {
     public toastCtrl: ToastController,
     public actionSheetCtrl: ActionSheetController) {
 
-    this.params = this.navParams.get('title');
     this.is_first = false;
     this.request_url();
 
@@ -60,7 +66,8 @@ export class DeclaredetailedPage {
   }
   request_url() {
     this.is_loading = true;
-    this.http.request(server + 'GetBLList?keyword=' + this.keyword + '&count=' + this.count)
+    this.http.request(server + 'GetBLList?keyword=' + this.keyword + '&count=' + this.count + '&param1=' + this.param1 + '&param2=' + this.param2
+      + '&param3=' + this.param3 + '&param4=' + this.param4 + '&param9=' + this.param9 + '&sheetname=' + this.sheetname)
       .toPromise()
       .then(res => {
         if (res.json().length > 0) {
@@ -79,12 +86,22 @@ export class DeclaredetailedPage {
   go_search() {
     let profileModal = this.modalCtrl.create(SearchPage);
     profileModal.onDidDismiss(data => {
-      console.log(data);
+      this.param1 = data.param1;
+      this.param2 = data.param2;
+      this.param3 = data.param3;
+      this.param4 = data.param4;
+      this.param9 = data.param9;
+      this.sheetname = data.param5;
+      if (!this.is_loading) {
+        this.items = [];
+        this.count = 1;
+        this.request_url();
+      }
     });
     profileModal.present();
   }
   pressEvent(BLID: number) {
-    let btn_arr = [ '已收取', '已申报', '已验货', '已通关'];
+    let btn_arr = ['已收取', '已申报', '已验货', '已通关'];
     new ShowActionSheet(this.actionSheetCtrl).presentActionSheet('选择状态', btn_arr, (res: string) => {
 
     });

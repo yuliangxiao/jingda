@@ -11,7 +11,7 @@ export class SearchPage {
     private param2: boolean = false;
     private param3: boolean = false;
     private param4: boolean = false;
-    private param5: boolean = false;
+    private param5: boolean = true;
     private param6: boolean = false;
     private param7: boolean = false;
     private param8: boolean = false;
@@ -21,11 +21,17 @@ export class SearchPage {
 
     }
     dismiss() {
-        let data = { 'foo': 'bar' };
-        this.viewCtrl.dismiss(data);
+        this.viewCtrl.dismiss({
+            'param1': this.param1,
+            'param2': this.param2,
+            'param3': this.param3,
+            'param4': this.param4,
+            'param9': this.param9,
+            'param5': this.param5 ? 'param5' : this.param6 ? 'param6' : this.param7 ? 'param7' : 'param8',
+        });
     }
     dismiss_no() {
-        this.viewCtrl.dismiss('');
+        this.viewCtrl.dismiss({});
     }
     btn_click(param: boolean) {
         if (param) {

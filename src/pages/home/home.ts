@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
-import { DeclarePage } from '../declare/declare';
+import { DeclaredetailedPage } from '../declaredetailed/declaredetailed';
 
 @Component({
   selector: 'page-home',
@@ -16,6 +16,6 @@ export class HomePage {
     this.navCtrl.push(AboutPage);
   }
   go_declare(){
-    this.navCtrl.push(DeclarePage);
+    this.navCtrl.push(DeclaredetailedPage);
   }
 }

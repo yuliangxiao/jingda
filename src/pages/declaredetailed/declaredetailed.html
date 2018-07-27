@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            {{params}}
+            报关列表
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -9,12 +9,8 @@
     <ion-fab right bottom>
         <button ion-fab color="secondary"><ion-icon name="arrow-dropup-circle"></ion-icon></button>
         <ion-fab-list side="top">
-            <button ion-fab color="primary">新</button>
-            <button ion-fab color="primary">收</button>
-            <button ion-fab color="primary">申</button>
-            <button ion-fab color="primary">验</button>
-            <button ion-fab color="primary">通</button>
-            <button ion-fab color="primary">全</button>
+            <button ion-fab color="primary"><ion-icon name="help-circle"></ion-icon></button>
+            <button ion-fab color="primary"><ion-icon name="link"></ion-icon></button>
         </ion-fab-list>
     </ion-fab>
     <ion-searchbar (ionInput)="getItems($event)" placeholder="请输入检索条件"></ion-searchbar>
@@ -25,11 +21,10 @@
                 {{item.CorpCN}}
             </ion-col>
             <ion-col class="row_title_last">
-                {{item.BLStatus}}
+                {{item.CusStatus}}
             </ion-col>
         </ion-row>
-        <hr />
-        <ion-row>
+        <ion-row class="border-top">
             <ion-col col-4>
                 <img src="assets/imgs/touxiang.jpeg">
             </ion-col>

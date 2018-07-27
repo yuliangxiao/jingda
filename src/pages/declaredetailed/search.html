@@ -31,12 +31,12 @@
         </ion-list-header>
         <ion-item>
             <ion-row>
-                <ion-col col-3><button [ngClass]="{'button_checked':param5}" (click)="param5=btn_click(param5)" small ion-button outline>海运出口</button></ion-col>
-                <ion-col col-3><button [ngClass]="{'button_checked':param6}" (click)="param6=btn_click(param6)" small ion-button outline>海运进口</button></ion-col>
-                <ion-col col-3><button [ngClass]="{'button_checked':param7}" (click)="param7=btn_click(param7)" small ion-button outline>空运出口</button></ion-col>
-                <ion-col col-3><button [ngClass]="{'button_checked':param8}" (click)="param8=btn_click(param8)" small ion-button outline>空运进口</button></ion-col>
+                <ion-col col-3><button [ngClass]="{'button_checked':param5}" (click)="param5=btn_click(param5);param6=false;param7=false;param8=false;" small ion-button outline>海运出口</button></ion-col>
+                <ion-col col-3><button [ngClass]="{'button_checked':param6}" (click)="param6=btn_click(param6);param5=false;param7=false;param8=false;" small ion-button outline>海运进口</button></ion-col>
+                <ion-col col-3><button [ngClass]="{'button_checked':param7}" (click)="param7=btn_click(param7);param6=false;param5=false;param8=false;" small ion-button outline>空运出口</button></ion-col>
+                <ion-col col-3><button [ngClass]="{'button_checked':param8}" (click)="param8=btn_click(param8);param6=false;param7=false;param5=false;" small ion-button outline>空运进口</button></ion-col>
             </ion-row>
         </ion-item>
     </ion-list>
-    <button ion-button block>确&nbsp;&nbsp;定</button>
+    <button ion-button block (click)="dismiss()">确&nbsp;&nbsp;定</button>
 </ion-content>
