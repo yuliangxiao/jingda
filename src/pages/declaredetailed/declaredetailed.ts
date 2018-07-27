@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
-import { AlertController, LoadingController, ModalController, ToastController } from 'ionic-angular';
+import { AlertController, LoadingController, ModalController, ToastController, ActionSheetController } from 'ionic-angular';
 
 import { SearchPage } from './search';
 import { server } from '../../assets/js/server_path'
 
-import { ShowToast } from '../../assets/js/common'
+import { ShowToast, ShowActionSheet } from '../../assets/js/common'
+
 
 @Component({
   selector: 'page-declaredetailed',
@@ -27,7 +28,8 @@ export class DeclaredetailedPage {
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public modalCtrl: ModalController,
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController,
+    public actionSheetCtrl: ActionSheetController) {
 
     this.params = this.navParams.get('title');
     this.is_first = false;
@@ -80,5 +82,11 @@ export class DeclaredetailedPage {
       console.log(data);
     });
     profileModal.present();
+  }
+  pressEvent(BLID: number) {
+    let btn_arr = [ '已收取', '已申报', '已验货', '已通关'];
+    new ShowActionSheet(this.actionSheetCtrl).presentActionSheet('选择状态', btn_arr, (res: string) => {
+
+    });
   }
 }

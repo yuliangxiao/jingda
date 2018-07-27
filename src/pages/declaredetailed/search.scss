@@ -15,4 +15,10 @@ page-search {
         background: #488aff;
         color: #fff;
     }
+    .height_big {
+        height: 80px !important;
+        ion-col {
+            padding: 0 5px;
+        }
+    }
 }

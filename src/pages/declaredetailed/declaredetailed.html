@@ -19,7 +19,7 @@
     </ion-fab>
     <ion-searchbar (ionInput)="getItems($event)" placeholder="请输入检索条件"></ion-searchbar>
 
-    <ion-card *ngFor="let item of items">
+    <ion-card *ngFor="let item of items" (press)="pressEvent(item.BLID)">
         <ion-row class="row_title">
             <ion-col col-9>
                 {{item.CorpCN}}

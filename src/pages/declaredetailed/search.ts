@@ -15,6 +15,7 @@ export class SearchPage {
     private param6: boolean = false;
     private param7: boolean = false;
     private param8: boolean = false;
+    private param9: boolean = false;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
 
