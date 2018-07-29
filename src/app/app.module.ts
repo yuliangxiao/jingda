@@ -4,9 +4,12 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { Base64 } from '@ionic-native/base64';
+import { Md5 } from "ts-md5/dist/md5";
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
+import { LoginPage } from '../pages/login/login';
 import { AboutPage } from '../pages/about/about';
 import { DeclaredetailedPage } from '../pages/declaredetailed/declaredetailed';
 import { SearchPage } from '../pages/declaredetailed/search';
@@ -27,11 +30,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     DeclarePage,
     SearchPage,
+    LoginPage,
     DeclaredetailedPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp, {
       backButtonText: '返回',
       iconMode: 'ios',
@@ -45,6 +50,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
+    LoginPage,
     DeclarePage,
     SearchPage,
     DeclaredetailedPage
@@ -55,6 +61,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     FileTransfer,
     ImagePicker,
     Base64,
+    Md5,
     FileTransferObject,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]

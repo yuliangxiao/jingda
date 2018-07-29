@@ -1,0 +1,28 @@
+page-login {
+    ion-content {
+        .scroll-content {
+            background: #f8fcff;
+            padding: 10px !important;
+        }
+        ion-list {
+            margin: 0 !important;
+            ion-item:first-child {
+                text-align: center !important;
+                padding-top: 50px !important;
+            }
+            ion-item {
+                background: #f8fcff !important;
+            }
+        }
+        img {
+            width: 150px;
+            height: 150px;
+        }
+        input {
+            border: solid 1px #e6e6e6 !important;
+            height: 50px !important;
+            padding-left: 10px !important;
+            background: #fff !important;
+        }
+    }
+}

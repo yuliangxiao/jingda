@@ -39,4 +39,20 @@ class ShowActionSheet {
         actionSheet.present();
     }
 }
-export { ShowToast, ShowActionSheet }
+class Loading {
+    private loadinger: any;
+    constructor(public loadingCtrl) {
+
+    }
+    loading(content: string = '请等待') {
+        this.loadinger = this.loadingCtrl.create({
+            content: content
+        });
+        this.loadinger.present();
+    }
+    dismiss() {
+        this.loadinger.dismiss();
+    }
+
+}
+export { ShowToast, ShowActionSheet, Loading }
