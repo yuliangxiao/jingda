@@ -5,7 +5,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content class="page-home" id="home">
+<ion-content padding id="home">
     <ion-slides pager style="height: 150px;" class="ion-slides">
         <ion-slide>
             <img src="../../assets/imgs/jdtp1.jpg">
@@ -19,10 +19,7 @@
             <img src="../../assets/imgs/jdtp3.jpg">
         </ion-slide>
     </ion-slides>
-    <!-- <ion-navbar class="content_navbar">
-        <ion-icon name="heart" style="margin-right: 10px"></ion-icon><label>选择京大,就是选择安全、超值的物流服务</label>
-    </ion-navbar> -->
-
+    <label class="index_label">选择京大,就是选择安全、超值的物流服务</label>
     <nav id="nav">
         <span (click)="goNews()">
             <img src="assets/icon/nav0.png" alt="">
@@ -37,16 +34,35 @@
             <h2>报关报检</h2>
         </span>
     </nav>
-    <!-- <ion-navbar class="content_navbar">
-        <ion-icon name="heart" style="margin-right: 10px"></ion-icon><label>今日快讯----今日快讯----今日快讯----今日快讯----</label>
-    </ion-navbar> -->
+    <div class="today_new_div">
+        <img src="../../assets/imgs/todaynews.png"><label>2018企业战略合作协议签署</label>
+    </div>
 
-    <ion-content>
-        <ion-item-group>
-            <ion-item-divider color="light">工作通知</ion-item-divider>
-            <ion-item>测试1<label>12-26</label></ion-item>
-            <ion-item>测试2<label>12-26</label></ion-item>
-            <ion-item>测试3<label>12-26</label></ion-item>
-        </ion-item-group>
-    </ion-content>
+    <ion-item-group>
+        <ion-item-divider color="light">工作通知<label style="float: right;">查看全部</label></ion-item-divider>
+        <ion-item>
+            <ion-row>
+                <ion-col class="col-left">
+                    国庆节放假通知
+                </ion-col>
+                <ion-col class="col-right">
+                    09-12
+                </ion-col>
+            </ion-row>
+
+            国庆节放假通知国庆节放假通知国庆节放假通知国庆节放假通知国庆节放假通知国庆节放假通知国庆节放假通知
+        </ion-item>
+        <ion-item>
+            <ion-row>
+                <ion-col class="col-left">
+                    国庆节放假通知
+                </ion-col>
+                <ion-col class="col-right">
+                    09-12
+                </ion-col>
+            </ion-row>
+
+            国庆节放假通知国庆节放假通知国庆节放假通知国庆节放假通知国庆节放假通知国庆节放假通知国庆节放假通知
+        </ion-item>
+    </ion-item-group>
 </ion-content>

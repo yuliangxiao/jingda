@@ -5,7 +5,7 @@
         </ion-title>
     </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content style="padding-top: 80px !important;">
     <ion-fab right bottom>
         <button ion-fab color="secondary"><ion-icon name="arrow-dropup-circle"></ion-icon></button>
         <ion-fab-list side="top">
@@ -13,48 +13,72 @@
             <button ion-fab color="primary"><ion-icon name="link"></ion-icon></button>
         </ion-fab-list>
     </ion-fab>
-    <ion-searchbar (ionInput)="getItems($event)" placeholder="请输入检索条件"></ion-searchbar>
+    <!-- <ion-searchbar (ionInput)="getItems($event)" placeholder="请输入检索条件"></ion-searchbar> -->
 
     <ion-card *ngFor="let item of items" (press)="pressEvent(item.BLID)">
         <ion-row class="row_title">
             <ion-col col-9>
-                {{item.CorpCN}}
+                <ion-icon name="boat"></ion-icon>
+                <label>青岛京大货运代理有限公司</label>
+                <!-- {{item.CorpCN}} -->
             </ion-col>
             <ion-col class="row_title_last">
-                {{item.CusStatus}}
+                <span class="span_status">操作中</span>
+                <!-- {{item.CusStatus}} -->
             </ion-col>
         </ion-row>
         <ion-row class="border-top">
-            <ion-col col-4>
+            <!-- <ion-item class="color_black">{{item.MBLNo}}</ion-item>
+            <ion-item>{{item.Vsl}}/{{item.Voy}}</ion-item>
+            <ion-item>{{item.ETD | date:'yyyy-MM-dd'}}</ion-item>
+            <ion-item>20GP*1</ion-item> -->
+            <ion-item>
+                订单号:
+                <ion-note item-end>219816519849</ion-note>
+            </ion-item>
+            <ion-item>
+                订单类型:
+                <ion-note item-end>出口</ion-note>
+            </ion-item>
+            <ion-item>
+                航线/班次:
+                <ion-note item-end>DALSJFD/16546</ion-note>
+            </ion-item>
+            <ion-item>
+                订单日期:
+                <ion-note item-end>2018-12-02</ion-note>
+            </ion-item>
+            <ion-item>
+                货运量:
+                <ion-note item-end>20GP*1</ion-note>
+            </ion-item>
+            <!-- <ion-col col-4>
                 <img src="assets/imgs/touxiang.jpeg">
             </ion-col>
             <ion-col>
-                <ion-item class="color_black">{{item.MBLNo}}</ion-item>
-                <ion-item>{{item.Vsl}}/{{item.Voy}}</ion-item>
-                <ion-item>{{item.ETD | date:'yyyy-MM-dd'}}</ion-item>
-                <ion-item>20GP*1</ion-item>
-            </ion-col>
+
+            </ion-col> -->
         </ion-row>
     </ion-card>
     <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
         <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载..."></ion-infinite-scroll-content>
     </ion-infinite-scroll>
 </ion-content>
-<ion-footer>
+<ion-header id="search">
     <ion-toolbar>
         <ion-row>
+            <ion-col>
+                <!-- <ion-icon name="time"></ion-icon><br> -->
+                <label>创建日期</label><span class="triangle"></span>
+            </ion-col>
+            <ion-col>
+                <!-- <ion-icon name="switch"></ion-icon><br> -->
+                <label>业务日期</label><span class="triangle"></span>
+            </ion-col>
             <ion-col (click)="go_search()">
-                <ion-icon name="funnel"></ion-icon><br>
-                <label>筛选</label>
-            </ion-col>
-            <ion-col>
-                <ion-icon name="switch"></ion-icon><br>
-                <label>业务日期</label>
-            </ion-col>
-            <ion-col>
-                <ion-icon name="time"></ion-icon><br>
-                <label>创建日期</label>
+                <label>筛&nbsp;&nbsp;&nbsp;&nbsp;选</label>
+                <ion-icon name="funnel"></ion-icon>
             </ion-col>
         </ion-row>
     </ion-toolbar>
-</ion-footer>
+</ion-header>

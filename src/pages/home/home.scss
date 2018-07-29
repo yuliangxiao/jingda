@@ -1,22 +1,70 @@
 $slide_img_height: 150px;
 $margin_height:10px;
 page-home {
+    ion-content {
+        background: linear-gradient(#4288fc, #fff, #fff);
+        .index_label {
+            height: 40px;
+            display: block;
+            line-height: 40px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #80affd;
+        }
+        .today_new_div {
+            height: 40px;
+            line-height: 40px;
+            img {
+                width: 65px;
+                float: left;
+                height: 30px;
+            }
+            label {
+                height: 30px;
+                line-height: 28px;
+                display: block;
+                float: left;
+                margin-left: 15px;
+            }
+        }
+        ion-item-group {
+            ion-item-divider {
+                background-color: #ffffff !important;
+                padding-left: 0 !important;
+                label {
+                    float: right;
+                    font-size: 14px;
+                    color: #c5c5c5;
+                    margin-top: 3px;
+                }
+            }
+        }
+    }
+    /* 标准的语法 */
     .ion-slides img {
         $slide_img_height: 150px;
         height: $slide_img_height;
+        border-radius: 10px;
     }
-    .content_navbar {
-        padding: 0 20px;
-        color: #2b78ac;
+    ion-toolbar {
+        .toolbar-title {
+            color: #fff;
+        }
+        .toolbar-background {
+            background: #4489fc;
+        }
     }
+    // .content_navbar {
+    //     padding: 0 20px;
+    //     color: #2b78ac;
+    // }
     /*功能导航*/
     #home #nav {
         height: 110px;
         width: 100%;
-        padding: 0 3%;
-        background-color: #fff;
+        // background-color: #fff;
         overflow: hidden;
-        box-shadow: 0 1px 1px #ebebeb;
+        // box-shadow: 0 1px 1px #ebebeb;
         margin-bottom: $margin_height;
     }
     #home #nav span {
@@ -38,17 +86,34 @@ page-home {
         text-align: center;
         margin-top: 10px;
     }
-    ion-navbar,
-    ion-slides {
-        margin-bottom: $margin_height;
-    }
+    // ion-navbar,
+    // ion-slides {
+    //     margin-bottom: $margin_height;
+    // }
     .item-block {
         min-height: 3rem;
         height: 30px;
         font-size: 1.3rem;
     }
-    ion-item-group label {
-        float: right;
+    ion-item-group {
+        ion-item {
+            height: 70px !important;
+            color: #c5c5c5 !important;
+        }
+        ion-col {
+            padding: 0 !important;
+        }
+        .col-left {
+            color: #000;
+            font-weight: bold;
+        }
+        .col-right {
+            color: #c5c5c5;
+            text-align: right;
+        }
+        ion-row {
+            margin-bottom: 10px;
+        }
     }
     .head_portrait {
         width: 30px;
@@ -56,12 +121,12 @@ page-home {
         border-radius: 999px;
         margin-left: 10px;
     }
-    ion-header .toolbar-background {
-        background: #5686fb;
-    }
-    .toolbar-title-ios {
-        color: #fff !important;
-    }
+    // ion-header .toolbar-background {
+    //     background: #5686fb;
+    // }
+    // .toolbar-title-ios {
+    //     color: #fff !important;
+    // }
     // ion-content>.scroll-content {
     //     margin-top: 44px !important;
     // }
