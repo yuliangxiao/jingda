@@ -17,6 +17,8 @@ import { TallySearchPage } from '../pages/tally/tallysearch';
 import { DeclarePage } from '../pages/declare/declare';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { DetailedPage } from '../pages/home/detailed';
+
 import { TabsPage } from '../pages/tabs/tabs';
 import { TallyPage } from '../pages/tally/tally';
 
@@ -34,6 +36,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SearchPage,
     TallySearchPage,
     TallyPage,
+    DetailedPage,
     LoginPage,
     DeclaredetailedPage
   ],
@@ -55,6 +58,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     TallyPage,
+    DetailedPage,
     TallySearchPage,
     LoginPage,
     DeclarePage,

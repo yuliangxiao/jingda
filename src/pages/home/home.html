@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar>
-        <img src="assets/imgs/touxiang.jpeg" class="head_portrait">
+        <img src="assets/imgs/touxiang.jpeg" (click)="go_login()" class="head_portrait">
         <ion-title>京大货运</ion-title>
     </ion-toolbar>
 </ion-header>
@@ -34,7 +34,7 @@
             <h2>报关报检</h2>
         </span>
     </nav>
-    <div class="today_new_div">
+    <div class="today_new_div" (click)="go_detailed()">
         <img src="../../assets/imgs/todaynews.png"><label>2018企业战略合作协议签署</label>
     </div>
 
@@ -49,7 +49,6 @@
                     09-12
                 </ion-col>
             </ion-row>
-
             国庆节放假通知国庆节放假通知国庆节放假通知国庆节放假通知国庆节放假通知国庆节放假通知国庆节放假通知
         </ion-item>
         <ion-item>

@@ -27,7 +27,7 @@ export class DeclaredetailedPage {
   private param3: boolean;
   private param4: boolean;
   private param9: boolean;
-  private sheetname: string;
+  private sheetname: string = 'TSeaBL';
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -104,8 +104,25 @@ export class DeclaredetailedPage {
   }
   pressEvent(BLID: number) {
     let btn_arr = ['已收取', '已申报', '已验货', '已通关'];
-    new ShowActionSheet(this.actionSheetCtrl).presentActionSheet('选择状态', btn_arr, (res: string) => {
-
+    new ShowActionSheet(this.actionSheetCtrl).presentActionSheet('选择状态', btn_arr, (res_str: string) => {
+      let loading = this.loadingCtrl.create({
+        content: '请等待'
+      });
+      loading.present();
+      console.log(res_str);
+      this.http.request(server + `ChangeBLStatus?BLID=${BLID}&&Status=${res_str}&&sheetname=${this.sheetname}`)
+        .toPromise()
+        .then(res => {
+          if (res.json().status == 0) {
+            this.items = [];
+            this.request_url();
+          }
+          else {
+            new ShowToast(this.toastCtrl).presentToast(res.json().msg);
+          }
+          loading.dismiss();
+        })
+        .catch(err => { console.error(err); loading.dismiss(); });
     });
   }
 }
