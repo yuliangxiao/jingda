@@ -13,7 +13,11 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
   constructor(public navCtrl: NavController, private storage: Storage) {
-
+    storage.get('islogin').then((val) => {
+      if (val != '0') {
+        this.navCtrl.push(LoginPage);
+      }
+    });
   }
   goNews() {
     this.navCtrl.push(AboutPage);

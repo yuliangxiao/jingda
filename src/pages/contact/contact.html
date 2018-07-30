@@ -32,6 +32,9 @@
             上传照片
         </ion-card-header>
         <ion-card-content>
+            <div *ngFor="let item of img_list">
+                <img src="{{item}}">
+            </div>
             <div>
                 <span (click)="select_img()"> + </span>
             </div>

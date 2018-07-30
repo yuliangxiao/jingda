@@ -17,11 +17,7 @@ export class LoginPage {
   private username: string = 'good';
   private password: string = '0000';
   constructor(public navCtrl: NavController, private http: Http, public toastCtrl: ToastController, public loadingCtrl: LoadingController, private storage: Storage) {
-    storage.get('islogin').then((val) => {
-      if (val == '0') {
-        this.navCtrl.push(HomePage);
-      }
-    });
+
   }
   login() {
     if (this.username == '') {

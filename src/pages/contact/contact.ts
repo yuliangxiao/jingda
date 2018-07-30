@@ -42,6 +42,10 @@ export class ContactPage {
     this.http.request(server + 'GetBLNo?id=' + this.typeTxt)
       .toPromise()
       .then(res => {
+        if (res.json().BLNo == undefined) {
+          this.showAlert(1, "没有单子!");
+          return false;
+        }
         this.input_txt = res.json()[0].BLNo;
         this.blid = res.json()[0].BLID;
       })
@@ -50,17 +54,22 @@ export class ContactPage {
   select_img() {
     this.img_list = [];
     this.img_str = "";
+    let loading = this.loadingCtrl.create({
+      content: '请等待'
+    });
     const options: ImagePickerOptions = {
       maximumImagesCount: 6,
       width: 500,
       height: 500,
-      quality: 100,
+      quality: 10,
       outputType: 1,
     };
     this.imagePicker.getPictures(options).then((results) => {
+      loading.present();
       for (var i = 0; i < results.length; i++) {
-        this.img_list.push(results[i]);
+        this.img_list.push('data:image/jpeg;base64,' + results[i]);
       }
+      loading.dismiss();
     }, () => {
     });
   }
@@ -87,7 +96,7 @@ export class ContactPage {
       content: '请等待'
     });
     loading.present();
-    $(".img_item img").each((v) => {
+    $("img").each((v) => {
       $.ajax({
         url: server + 'InsertImg?id=' + this.blid,
         type: 'post',
