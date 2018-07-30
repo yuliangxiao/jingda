@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            仓库理货
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content style="padding-top: 80px !important;">
+    <ion-fab right bottom>
+        <button ion-fab color="secondary"><ion-icon name="arrow-dropup-circle"></ion-icon></button>
+        <ion-fab-list side="top">
+            <button ion-fab color="primary"><ion-icon name="help-circle"></ion-icon></button>
+            <button ion-fab color="primary"><ion-icon name="link"></ion-icon></button>
+        </ion-fab-list>
+    </ion-fab>
+    <!-- <ion-searchbar (ionInput)="getItems($event)" placeholder="请输入检索条件"></ion-searchbar> -->
+
+    <ion-card *ngFor="let item of items" (press)="pressEvent(item.BLID,item.Status)">
+        <ion-row class="row_title">
+            <ion-col col-9>
+                <ion-icon name="boat"></ion-icon>
+                <label>青岛京大货运代理有限公司</label>
+                <!-- {{item.CorpCN}} -->
+            </ion-col>
+            <ion-col class="row_title_last">
+                <span class="span_status" *ngIf="item.Status==1">新建</span>
+                <span class="span_status" *ngIf="item.Status==2">计划完成</span>
+                <span class="span_status" *ngIf="item.Status==3" style="background:dodgerblue">理货完成</span>
+                <span class="span_status" *ngIf="item.Status==4" style="background:green">理货完成</span>
+                <!-- {{item.CusStatus}} -->
+            </ion-col>
+        </ion-row>
+        <ion-row class="border-top">
+            <!-- <ion-item class="color_black">{{item.MBLNo}}</ion-item>
+            <ion-item>{{item.Vsl}}/{{item.Voy}}</ion-item>
+            <ion-item>{{item.ETD | date:'yyyy-MM-dd'}}</ion-item>
+            <ion-item>20GP*1</ion-item> -->
+            <ion-item>
+                主单号:
+                <ion-note item-end>MSDNN1651616</ion-note>
+            </ion-item>
+
+            <ion-item>
+                E&nbsp;&nbsp;T&nbsp;&nbsp;A:
+                <ion-note item-end>2018-12-02</ion-note>
+            </ion-item>
+            <ion-item>
+                货&nbsp;&nbsp;&nbsp;&nbsp;物:
+                <ion-note item-end>20KG/20CBM</ion-note>
+            </ion-item>
+        </ion-row>
+    </ion-card>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>
+<ion-header id="search">
+    <ion-toolbar>
+        <ion-row>
+            <ion-col>
+                <!-- <ion-icon name="time"></ion-icon><br> -->
+                <label>创建日期</label><span class="triangle"></span>
+            </ion-col>
+            <ion-col>
+                <!-- <ion-icon name="switch"></ion-icon><br> -->
+                <label>业务日期</label><span class="triangle"></span>
+            </ion-col>
+            <ion-col (click)="go_search()">
+                <label>筛&nbsp;&nbsp;&nbsp;&nbsp;选</label>
+                <ion-icon name="funnel"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>

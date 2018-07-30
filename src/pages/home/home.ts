@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import { DeclaredetailedPage } from '../declaredetailed/declaredetailed';
+import { TallyPage } from '../tally/tally';
 
 @Component({
   selector: 'page-home',
@@ -17,5 +18,8 @@ export class HomePage {
   }
   go_declare(){
     this.navCtrl.push(DeclaredetailedPage);
+  }
+  go_tally(){
+    this.navCtrl.push(TallyPage);
   }
 }

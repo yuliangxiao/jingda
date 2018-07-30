@@ -8,7 +8,7 @@ import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-
+import { server } from '../../assets/js/server_path';
 
 @Component({
   selector: 'page-contact',
@@ -39,7 +39,7 @@ export class ContactPage {
   }
 
   switchType() {
-    this.http.request('http://127.0.0.1:8888/GetBLNo?id=' + this.typeTxt)
+    this.http.request(server + 'GetBLNo?id=' + this.typeTxt)
       .toPromise()
       .then(res => {
         this.input_txt = res.json()[0].BLNo;
@@ -89,7 +89,7 @@ export class ContactPage {
     loading.present();
     $(".img_item img").each((v) => {
       $.ajax({
-        url: 'http://127.0.0.1:8888/InsertImg?id=' + this.blid,
+        url: server + 'InsertImg?id=' + this.blid,
         type: 'post',
         async: false,
         data: { img: $(v).attr('src') },

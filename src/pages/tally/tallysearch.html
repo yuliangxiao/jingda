@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start (click)="dismiss_no()">
+            <button ion-button icon-only>
+                      <ion-icon name="arrow-back"></ion-icon>
+                    </button>
+        </ion-buttons>
+        <ion-title>
+            条件
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list no-lines>
+        <ion-list-header>
+            业务状态
+        </ion-list-header>
+        <ion-item>
+            <ion-row>
+                <ion-col col-3><button [ngClass]="{'button_checked':param1}" (click)="param1=btn_click(param1)" small ion-button outline>新&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建</button></ion-col>
+                <ion-col col-3><button [ngClass]="{'button_checked':param2}" (click)="param2=btn_click(param2)" small ion-button outline>计划完成</button></ion-col>
+                <ion-col col-3><button [ngClass]="{'button_checked':param3}" (click)="param3=btn_click(param3)" small ion-button outline>理货完成</button></ion-col>
+                <ion-col col-3><button [ngClass]="{'button_checked':param4}" (click)="param4=btn_click(param4)" small ion-button outline>完&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成</button></ion-col>
+            </ion-row>
+        </ion-item>
+    </ion-list>
+    <div padding>
+        <button ion-button block (click)="dismiss()">确&nbsp;&nbsp;定</button>
+    </div>
+
+</ion-content>

@@ -1,20 +1,29 @@
 page-about {
-    #nav span {
+    #nav div {
         float: left;
-        height: 150px;
-        width: 46%;
-        margin: 2% 2%;
+        height: 120px;
+        width: 30%;
+        margin: 2% 10%;
         border-radius: 10px;
         padding-top: 20px;
         text-align: center;
     }
     #nav i {
-        width: 60px;
-        color: #fff;
-        font-size: 4em;
+        color: rgb(100, 136, 236);
+        font-size: 3em;
     }
     #nav h6 {
         margin-top: 0.6rem;
-        color: #fff;
+        color: #000000;
+    }
+    #nav {
+        span {
+            border: solid 1px rgb(100, 136, 236);
+            border-radius: 50%;
+            height: 70px;
+            width: 70px;
+            line-height: 70px;
+            display: inline-block;
+        }
     }
 }

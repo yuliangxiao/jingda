@@ -13,10 +13,12 @@ import { LoginPage } from '../pages/login/login';
 import { AboutPage } from '../pages/about/about';
 import { DeclaredetailedPage } from '../pages/declaredetailed/declaredetailed';
 import { SearchPage } from '../pages/declaredetailed/search';
+import { TallySearchPage } from '../pages/tally/tallysearch';
 import { DeclarePage } from '../pages/declare/declare';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { TallyPage } from '../pages/tally/tally';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -30,6 +32,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     DeclarePage,
     SearchPage,
+    TallySearchPage,
+    TallyPage,
     LoginPage,
     DeclaredetailedPage
   ],
@@ -50,6 +54,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
+    TallyPage,
+    TallySearchPage,
     LoginPage,
     DeclarePage,
     SearchPage,

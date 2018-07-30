@@ -9,33 +9,48 @@
 
 <ion-content padding id="about">
     <nav id="nav">
-        <span style="background: #5eab08" (click)="GoNew('发车(提货)')">
-            <i class="ion-clipboard"></i>
+        <div (click)="GoNew('发车(提货)')">
+            <span>
+                <i class="ion-clipboard"></i>
+          </span>
             <h6>发车(提货)</h6>
-        </span>
-        <span style="background: #224660" (click)="GoNew('到达')">
-            <i class="ion-heart"></i>
+        </div>
+
+        <div (click)="GoNew('到达')">
+            <span>
+                    <i class="ion-heart"></i>
+              </span>
             <h6>到达</h6>
-        </span>
-        <span style="background: #228776">
-            <i class="ion-clock"></i>
+        </div>
+        <div>
+            <span>
+                    <i class="ion-clock"></i>
+              </span>
             <h6>签单历史</h6>
-        </span>
-        <span style="background: #0e8f52"> 
-            <i class="ion-leaf"></i>
+        </div>
+        <div>
+            <span>
+                        <i class="ion-leaf"></i>
+                  </span>
             <h6>异常</h6>
-        </span>
-        <span style="background: #004893">
-            <i class="ion-chatbox-working"></i>
+        </div>
+        <div>
+            <span>
+                        <i class="ion-happy"></i>
+                  </span>
             <h6>消息管理</h6>
-        </span>
-        <span style="background: #f36a1c">
-            <i class="ion-pricetag"></i>
+        </div>
+        <div>
+            <span>
+                        <i class="ion-pricetag"></i>
+                  </span>
             <h6>签收(交货)</h6>
-        </span>
-        <span style="background: #fd7070">
-            <i class="ion-ios-recording"></i>
+        </div>
+        <div>
+            <span>
+                        <i class="ion-ios-recording"></i>
+                </span>
             <h6>费用报销</h6>
-        </span>
+        </div>
     </nav>
 </ion-content>

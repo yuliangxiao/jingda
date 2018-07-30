@@ -7,7 +7,56 @@
 </ion-header>
 
 <ion-content>
-    <ion-list no-lines>
+    <ion-card>
+        <ion-list no-lines>
+            <ion-item>
+                <ion-label style="color: purple">号码</ion-label>
+                <ion-input type="text" [(ngModel)]="input_txt"></ion-input>
+                <ion-select [(ngModel)]="typeTxt" placeholder="选择类型" title="阿斯顿发" (ngModelChange)="switchType()">
+                    <ion-option value="1">提货</ion-option>
+                    <ion-option value="2">发车</ion-option>
+                    <ion-option value="3">中转</ion-option>
+                    <ion-option value="4">到达</ion-option>
+                    <ion-option value="5">签收</ion-option>
+                    <ion-option value="6">异常</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                带上传单数
+                <ion-note item-end style="color: red;font-size: 18px">16</ion-note>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            上传照片
+        </ion-card-header>
+        <ion-card-content>
+            <div>
+                <span (click)="select_img()"> + </span>
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-list no-lines>
+            <ion-item>
+                号码
+                <ion-note item-end>15616519516</ion-note>
+            </ion-item>
+            <ion-item>
+                类型
+                <ion-note item-end>客户签收单</ion-note>
+            </ion-item>
+            <ion-item>
+                标题
+                <ion-note item-end>签收</ion-note>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <div padding>
+        <button ion-button class="button-block" large (click)="sub_order()">上传</button>
+    </div>
+    <!-- <ion-list no-lines>
         <ion-item>
             <ion-label style="color: purple">号码</ion-label>
             <ion-input type="text" [(ngModel)]="input_txt"></ion-input>
@@ -21,14 +70,6 @@
             </ion-select>
         </ion-item>
 
-        <ion-item>
-            <button ion-button large>条形码</button>
-            <button ion-button large>二维码</button>
-            <!-- <ion-select placeholder="到达1">
-                <ion-option value="0">到达1</ion-option>
-                <ion-option>到达1</ion-option>
-            </ion-select> -->
-        </ion-item>
 
         <ion-item>
             <ion-label style="flex:0.5">待上传单数:</ion-label>
@@ -37,7 +78,7 @@
         <ion-item id="img_list">
             <div class="img_item Img_File_Item" *ngFor="let item of img_list"><img src="{{item}}" /><span class="delete"></span></div>
         </ion-item>
-        <ion-item><button ion-button outline class="button-block" large (click)="select_img()">选择照片</button><input type="file" id="file" style="display: none;" accept="image/*" capture="camera"></ion-item>
+        <ion-item><button ion-button outline class="button-block" large >选择照片</button><input type="file" id="file" style="display: none;" accept="image/*" capture="camera"></ion-item>
         <ion-item class="item_title_height">
             <ion-label style="flex:0.2">号码:</ion-label>
             <ion-label style="flex:0.5">123456</ion-label>
@@ -54,5 +95,5 @@
             <ion-label style="flex:0.3;float: right;"></ion-label>
         </ion-item>
     </ion-list>
-    <button ion-button class="button-block" style="margin:0 2% !important;width: 96%" large (click)="sub_order()">上传</button>
+    <button ion-button class="button-block" style="margin:0 2% !important;width: 96%" large (click)="sub_order()">上传</button> -->
 </ion-content>
