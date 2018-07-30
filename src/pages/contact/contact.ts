@@ -9,6 +9,7 @@ import { Base64 } from '@ionic-native/base64';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { server } from '../../assets/js/server_path';
+import { Loading } from '../../assets/js/common';
 
 @Component({
   selector: 'page-contact',
@@ -42,7 +43,7 @@ export class ContactPage {
     this.http.request(server + 'GetBLNo?id=' + this.typeTxt)
       .toPromise()
       .then(res => {
-        if (res.json().BLNo == undefined) {
+        if (res.json()[0].BLNo == undefined) {
           this.showAlert(1, "没有单子!");
           return false;
         }
@@ -88,29 +89,25 @@ export class ContactPage {
       this.showAlert(1, "请选择单子!");
       return false;
     }
-    if ($(".img_item").length == 0) {
+    if (this.img_list.length == 0) {
       this.showAlert(1, "请选择图片!");
       return false;
     }
-    let loading = this.loadingCtrl.create({
-      content: '请等待'
-    });
-    loading.present();
-    $("img").each((v) => {
+    let loading = new Loading(this.loadingCtrl);
+    loading.loading('正在登录');
+    this.img_list.forEach((ele) => {
       $.ajax({
         url: server + 'InsertImg?id=' + this.blid,
         type: 'post',
         async: false,
-        data: { img: $(v).attr('src') },
+        data: { img: ele },
         success: function () {
-
         },
         error: function () {
           console.log("error");
         }
       });
-
-    });
+    })
     loading.dismiss();
     this.showAlert(0, "保存成功!");
   }

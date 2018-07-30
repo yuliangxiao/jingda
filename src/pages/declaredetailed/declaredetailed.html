@@ -19,34 +19,37 @@
         <ion-row class="row_title">
             <ion-col col-9>
                 <ion-icon name="boat"></ion-icon>
-                <label>青岛京大货运代理有限公司</label>
-                <!-- {{item.CorpCN}} -->
+                <label>{{item.CorpCN}}</label>
             </ion-col>
             <ion-col class="row_title_last">
-                <span class="span_status">操作中</span>
-                <!-- {{item.CusStatus}} -->
+                <span class="span_status" *ngIf="item.CusStatus==1">新委托</span>
+                <span class="span_status" *ngIf="item.CusStatus==2">已收取</span>
+                <span class="span_status" *ngIf="item.CusStatus==3" style="background: green">已申报</span>
+                <span class="span_status" *ngIf="item.CusStatus==4" style="background: green">已验货</span>
+                <span class="span_status" *ngIf="item.CusStatus==5" style="background: green">已通关</span>
             </ion-col>
         </ion-row>
         <ion-row class="border-top">
-            <!-- <ion-item class="color_black">{{item.MBLNo}}</ion-item>
-            <ion-item>{{item.Vsl}}/{{item.Voy}}</ion-item>
+            <!-- <ion-item class="color_black"></ion-item>
+            <ion-item></ion-item>
             <ion-item>{{item.ETD | date:'yyyy-MM-dd'}}</ion-item>
             <ion-item>20GP*1</ion-item> -->
             <ion-item>
                 提单号:
-                <ion-note item-end>219816519849</ion-note>
+                <ion-note item-end>{{item.MBLNo}}</ion-note>
             </ion-item>
             <ion-item>
                 业务类型:
-                <ion-note item-end>出口</ion-note>
+                <ion-note item-end *ngIf="item.TradeType==1">进口</ion-note>
+                <ion-note item-end *ngIf="item.TradeType==2">出口</ion-note>
             </ion-item>
             <ion-item>
                 航线/班次:
-                <ion-note item-end>DALSJFD/16546</ion-note>
+                <ion-note item-end>{{item.Vsl}}/{{item.Voy}}</ion-note>
             </ion-item>
             <ion-item>
                 业务日期:
-                <ion-note item-end>2018-12-02</ion-note>
+                <ion-note item-end>{{item.BLDate | date:'yyyy-MM-dd'}}</ion-note>
             </ion-item>
             <ion-item>
                 货运量:

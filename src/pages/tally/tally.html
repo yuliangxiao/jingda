@@ -37,16 +37,16 @@
             <ion-item>20GP*1</ion-item> -->
             <ion-item>
                 主单号:
-                <ion-note item-end>MSDNN1651616</ion-note>
+                <ion-note item-end>{{MBLNo}}</ion-note>
             </ion-item>
 
             <ion-item>
                 E&nbsp;&nbsp;T&nbsp;&nbsp;A:
-                <ion-note item-end>2018-12-02</ion-note>
+                <ion-note item-end>{{ETA | date:'yyyy-MM-dd'}}</ion-note>
             </ion-item>
             <ion-item>
                 货&nbsp;&nbsp;&nbsp;&nbsp;物:
-                <ion-note item-end>20KG/20CBM</ion-note>
+                <ion-note item-end>{{PreTtlWeight}}KG/{{PreTtlVolume}}CBM</ion-note>
             </ion-item>
         </ion-row>
     </ion-card>
