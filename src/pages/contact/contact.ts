@@ -3,13 +3,14 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
-import { AlertController, LoadingController } from 'ionic-angular';
+import { AlertController, LoadingController, ModalController } from 'ionic-angular';
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker';
-import { Base64 } from '@ionic-native/base64';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { server } from '../../assets/js/server_path';
-import { Loading } from '../../assets/js/common';
+import { Loading, Confirm } from '../../assets/js/common';
+
+import { BasicFeePage } from './basic_fee';
 
 @Component({
   selector: 'page-contact',
@@ -20,23 +21,20 @@ export class ContactPage {
   public params: Text;
   public typeTxt: any;
   public input_txt: Text;
-  public file: any;
   public blid: number;
   public img_str: string;
+  public feeid: any;
+  public fee_list: any = [];
   img_list: Array<string> = [];
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private http: Http,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    private imagePicker: ImagePicker,
-    private base64: Base64,
-    private transfer: FileTransfer,
-    private sanitizer: DomSanitizer) {
+    public modalCtrl: ModalController,
+    private imagePicker: ImagePicker) {
     this.params = this.navParams.get('title');
     this.blid = 0;
-    // 设置选项
-
   }
 
   switchType() {
@@ -83,7 +81,6 @@ export class ContactPage {
     alert.present();
   }
 
-
   sub_order() {
     if (this.blid == 0) {
       this.showAlert(1, "请选择单子!");
@@ -93,8 +90,43 @@ export class ContactPage {
       this.showAlert(1, "请选择图片!");
       return false;
     }
+
+    if (this.fee_list.length == 0) {
+      new Confirm(this.alertCtrl).showConfirm('警告', '未录入费用,是否继续', (bl: boolean) => {
+        if (bl) {
+          this.sub_order_url();
+        }
+      });
+    }
+    else {
+      this.sub_order_url();
+    }
+  }
+  sub_order_url() {
+
+    let has_null_amt = false;
+    this.fee_list.forEach(ele => {
+      if (ele.Amt == '') {
+        has_null_amt = true;
+      }
+    })
+    if (has_null_amt) {
+      this.showAlert(1, "含有未录入金额的费用,无法提交");
+      return false;
+    }
     let loading = new Loading(this.loadingCtrl);
-    loading.loading('正在登录');
+    loading.loading('正在提交');
+    $.ajax({
+      url: server + 'InsertFee?id=' + this.blid,
+      type: 'post',
+      async: false,
+      data: { "list": JSON.stringify(this.fee_list) },
+      success: function () {
+      },
+      error: function () {
+        console.log("error");
+      }
+    });
     this.img_list.forEach((ele) => {
       $.ajax({
         url: server + 'InsertImg?id=' + this.blid,
@@ -111,5 +143,18 @@ export class ContactPage {
     loading.dismiss();
     this.showAlert(0, "保存成功!");
   }
+  go_basicfee() {
+    let profileModal = this.modalCtrl.create(BasicFeePage);
+    profileModal.onDidDismiss(data => {
+      if (data.FeeID != undefined) {
 
+        this.fee_list.push({
+          'FeeID': data.FeeID,
+          'FeeCN': data.FeeCN,
+          'Amt': ''
+        })
+      }
+    });
+    profileModal.present();
+  }
 }

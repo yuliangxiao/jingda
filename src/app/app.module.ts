@@ -18,6 +18,7 @@ import { DeclarePage } from '../pages/declare/declare';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { DetailedPage } from '../pages/home/detailed';
+import { BasicFeePage } from '../pages/contact/basic_fee';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { TallyPage } from '../pages/tally/tally';
@@ -38,6 +39,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TallyPage,
     DetailedPage,
     LoginPage,
+    BasicFeePage,
     DeclaredetailedPage
   ],
   imports: [
@@ -62,6 +64,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TallySearchPage,
     LoginPage,
     DeclarePage,
+    BasicFeePage,
     SearchPage,
     DeclaredetailedPage
   ],

@@ -11,9 +11,18 @@ page-contact {
         height: 30px !important;
     }
     ion-card {
+        .item {
+            font-size: 1.5rem !important;
+        }
         border-radius: 10px !important;
     }
     ion-card-content {
+        .item {
+            height: 30px !important;
+        }
+        .input-wrapper {
+            margin-bottom: 0 !important;
+        }
         div {
             width: 30%;
             float: left;
