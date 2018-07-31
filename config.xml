@@ -88,5 +88,8 @@
     </plugin>
     <plugin name="com-badrit-base64" spec="^0.2.0" />
     <plugin name="cordova-sqlite-storage" spec="^2.3.3" />
+    <plugin name="jpush-phonegap-plugin" spec="^3.4.2">
+        <variable name="APP_KEY" value="9e88856c32ce891020a5bf11" />
+    </plugin>
     <engine name="android" spec="7.0.0" />
 </widget>

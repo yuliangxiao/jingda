@@ -6,6 +6,8 @@ import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { Base64 } from '@ionic-native/base64';
 import { Md5 } from "ts-md5/dist/md5";
 import { IonicStorageModule } from '@ionic/storage';
+import { JPush } from '@jiguang-ionic/jpush';
+import { JPushService } from 'ionic2-jpush/dist'
 
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
@@ -75,6 +77,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ImagePicker,
     Base64,
     Md5,
+    JPush,
+    JPushService,
     FileTransferObject,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
