@@ -81,4 +81,4 @@ class Loading {
     }
 
 }
-export { ShowToast, ShowActionSheet, Loading, Confirm }
+export { ShowToast, ShowActionSheet, Loading, Confirm}

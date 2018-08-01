@@ -15,7 +15,6 @@ import { JPushService } from 'ionic2-jpush/dist'
   providers: [JPushService]
 })
 export class HomePage {
-
   constructor(public navCtrl: NavController, private storage: Storage, private jPushPlugin: JPushService) {
     storage.get('islogin').then((val) => {
       if (val != '0') {
@@ -52,9 +51,9 @@ export class HomePage {
  * 注册极光
  */
   init() {
-    this.jPushPlugin.init()
-      .then(res => alert(res))
-      .catch(err => alert(err))
+    // this.jPushPlugin.init()
+    //   .then(res => alert(res))
+    //   .catch(err => alert(err))
   }
 
   /**

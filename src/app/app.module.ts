@@ -8,6 +8,8 @@ import { Md5 } from "ts-md5/dist/md5";
 import { IonicStorageModule } from '@ionic/storage';
 import { JPush } from '@jiguang-ionic/jpush';
 import { JPushService } from 'ionic2-jpush/dist'
+import { ProductServer } from '../assets/js/injection';
+
 
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
@@ -27,6 +29,9 @@ import { TallyPage } from '../pages/tally/tally';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { CommonProvider } from '../providers/common/common';
+import { ConfigProvider } from '../providers/config/config';
+import { CacheProvider } from '../providers/cache/cache';
 
 @NgModule({
   declarations: [
@@ -80,7 +85,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     JPush,
     JPushService,
     FileTransferObject,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    [ProductServer],
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    CommonProvider,
+    ConfigProvider,
+    CacheProvider
   ]
 })
 export class AppModule { }
