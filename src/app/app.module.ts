@@ -9,7 +9,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { JPush } from '@jiguang-ionic/jpush';
 import { JPushService } from 'ionic2-jpush/dist'
 import { ProductServer } from '../assets/js/injection';
-
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
@@ -85,6 +85,7 @@ import { CacheProvider } from '../providers/cache/cache';
     JPush,
     JPushService,
     FileTransferObject,
+    Geolocation,
     [ProductServer],
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     CommonProvider,

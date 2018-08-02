@@ -3,14 +3,17 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
-import { AlertController, LoadingController, ModalController } from 'ionic-angular';
+import { AlertController, LoadingController, ModalController, ToastController } from 'ionic-angular';
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { server } from '../../assets/js/server_path';
-import { Loading, Confirm } from '../../assets/js/common';
-
+import { Loading, Confirm, ShowToast } from '../../assets/js/common';
 import { BasicFeePage } from './basic_fee';
+import { Geolocation } from '@ionic-native/geolocation';
+
+
+
 
 @Component({
   selector: 'page-contact',
@@ -32,8 +35,11 @@ export class ContactPage {
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public modalCtrl: ModalController,
+    public toastCtrl: ToastController,
+    private geolocation: Geolocation,
     private imagePicker: ImagePicker) {
     this.params = this.navParams.get('title');
+    new ShowToast(this.toastCtrl).presentToast('请打开GPS准确定位');
     this.blid = 0;
   }
 
@@ -80,7 +86,8 @@ export class ContactPage {
     });
     alert.present();
   }
-
+  getGPS() {
+  }
   sub_order() {
     if (this.blid == 0) {
       this.showAlert(1, "请选择单子!");
