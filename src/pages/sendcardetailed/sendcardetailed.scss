@@ -1,0 +1,68 @@
+page-sendcardetailed {
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+    }
+    #canvas {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    #canvas canvas {
+        display: block;
+    }
+    #clearCanvas {
+        width: 50%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border: 1px solid #DEDEDE;
+        z-index: 1;
+    }
+    #saveCanvas {
+        width: 50%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border: 1px solid #DEDEDE;
+        z-index: 1;
+    }
+    .item-block {
+        min-height: 3rem;
+        height: 50px;
+    }
+    .button-large-ios {
+        height: 2.3em;
+        margin: 0 !important;
+    }
+    .item_title_height {
+        height: 30px !important;
+    }
+    ion-card {
+        .item {
+            font-size: 1.5rem !important;
+        }
+        border-radius: 10px !important;
+    }
+    ion-card-content {
+        .item {
+            height: 30px !important;
+        }
+        .input-wrapper {
+            margin-bottom: 0 !important;
+        }
+        div {
+            width: 30%;
+            float: left;
+            margin-right: 2%;
+            margin-bottom: 10px;
+        }
+    }
+}

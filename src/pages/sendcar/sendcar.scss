@@ -1,0 +1,90 @@
+page-sendcar {
+    $color-black: #000;
+    .scroll-content {
+        margin-top: 80px !important;
+    }
+    ion-content {
+        background: #f9f9f9 !important;
+    }
+    ion-card {
+        border-radius: 10px !important;
+        .row_title {
+            height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+            padding: 0 10px;
+            ion-col:first-child {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-weight: bold;
+                ion-icon {
+                    color: #6363fd;
+                    font-size: 1.4em;
+                }
+            }
+        }
+        .row_title_last {
+            padding: 5px 0 !important;
+            font-size: 16px;
+            color: #cc9d45;
+            text-align: right;
+        }
+        .item-block {
+            min-height: 0.4rem;
+            .input-wrapper {
+                height: 25px;
+                font-size: 16px;
+                color: #868686;
+            }
+        }
+        ion-item {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap
+        }
+        .color_black .label {
+            color: $color-black !important;
+        }
+        img {
+            width: 70%;
+            height: 70%;
+            margin-left: 15%;
+        }
+        .border-top {
+            border-top: dashed 1px #e6e6e6 !important;
+            margin-top: 5px;
+            padding-top: 10px;
+        }
+        .span_status {
+            padding: 3px 7px;
+            border-radius: 20px;
+            background: gold;
+            color: #fff;
+        }
+    }
+    #search {
+        margin-top: 46px;
+        font-size: 16px !important;
+        ion-col {
+            padding: 0 !important;
+            text-align: center;
+        }
+        .toolbar-background {
+            border: 0 !important;
+        }
+        .triangle {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 8px;
+            vertical-align: middle;
+            border-top: 5px solid;
+            border-right: 5px solid transparent;
+            border-left: 5px solid transparent;
+        }
+        ion-icon {
+            font-size: 1em;
+        }
+    }
+}

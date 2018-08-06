@@ -1,0 +1,23 @@
+page-search {
+    .item {
+        padding-left: 0;
+    }
+    .item-block {
+        min-height: 3rem;
+        height: 30px;
+    }
+    ion-list-header {
+        padding-left: 10px !important;
+        font-size: 16px !important;
+    }
+    .button_checked {
+        background: #488aff;
+        color: #fff;
+    }
+    .height_big {
+        height: 80px !important;
+        ion-col {
+            padding: 0 5px;
+        }
+    }
+}

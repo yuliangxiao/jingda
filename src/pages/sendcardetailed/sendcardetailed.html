@@ -1,0 +1,105 @@
+<!--
+  Generated template for the SendcardetailedPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>派车单</ion-title>
+    </ion-navbar>
+
+</ion-header>
+<ion-content>
+    <ion-fab right bottom>
+        <button ion-fab color="secondary"><ion-icon name="arrow-dropup-circle"></ion-icon></button>
+        <ion-fab-list side="top">
+            <button ion-fab color="primary" (click)="cleanCanvas()"><ion-icon name="help-circle"></ion-icon></button>
+        </ion-fab-list>
+    </ion-fab>
+    <ion-card>
+        <ion-card-header>
+            基本信息
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    航班/日期
+                    <ion-note item-end>{{DataObj.Voy}}/{{DataObj.PreDeliverTime | date:'yyyy-MM-dd'}}</ion-note>
+                </ion-item>
+                <ion-item>
+                    MBLNo
+                    <ion-note item-end>{{DataObj.MBLNo}}</ion-note>
+                </ion-item>
+                <ion-item>
+                    HBLNo
+                    <ion-note item-end>{{DataObj.HBLNo}}</ion-note>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            货物信息
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    品名
+                    <ion-note item-end>{{DataObj.GoodsName}}</ion-note>
+                </ion-item>
+                <ion-item>
+                    件重尺
+                    <ion-note item-end>{{DataObj.Qty}}/{{DataObj.Weight}}/{{DataObj.Volume}}</ion-note>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            提货信息
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    提货地址
+                    <ion-note item-end>{{DataObj.PickupPlace}}</ion-note>
+                </ion-item>
+                <ion-item>
+                    要求送达时间
+                    <ion-note item-end>{{DataObj.PickupTime| date:'yyyy-MM-dd'}}</ion-note>
+                </ion-item>
+                <ion-item>
+                    送货地址
+                    <ion-note item-end>{{DataObj.DeliverPlace}}</ion-note>
+                </ion-item>
+                <ion-item>
+                    要求送达时间
+                    <ion-note item-end>{{DataObj.DeliverTime| date:'yyyy-MM-dd'}}</ion-note>
+                </ion-item>
+                <ion-item>
+                    送货车辆
+                    <ion-note item-end>{{DataObj.CarNo}}</ion-note>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-item>
+            日期
+            <ion-note item-end>{{DataObj.CurrDate}}</ion-note>
+        </ion-item>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            交货签字
+        </ion-card-header>
+        <ion-card-content style="height: 100px">
+            <div id="canvas"></div>
+        </ion-card-content>
+    </ion-card>
+    <div padding>
+        <button ion-button class="button-block" large (click)="subOrder()">上传</button>
+    </div>
+</ion-content>

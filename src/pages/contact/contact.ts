@@ -14,6 +14,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 
 
+declare var BMap;
+declare var BMapLib;
 
 @Component({
   selector: 'page-contact',
@@ -87,6 +89,16 @@ export class ContactPage {
     alert.present();
   }
   getGPS() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+
+      console.log('GPS定位：您的位置是 ' + resp.coords.longitude + ',' + resp.coords.latitude);
+
+    }).catch(e => {
+
+      console.log('Error happened when get current position.');
+
+    });
+
   }
   sub_order() {
     if (this.blid == 0) {

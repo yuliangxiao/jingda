@@ -78,7 +78,7 @@
                 "APP_KEY": "9e88856c32ce891020a5bf11"
             },
             "cordova-plugin-geolocation": {
-                "GEOLOCATION_USAGE_DESCRIPTION": "申请获取地理位置"
+                "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
             },
             "cordova-plugin-baidumaplocation": {
                 "ANDROID_KEY": "ZtIoNqYICQmbODAeAmThO2RzCEwU4R8d",

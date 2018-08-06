@@ -20,7 +20,7 @@ export interface IResponseData<T> {
 @Injectable()
 export class CommonProvider {
 
-  constructor(public authHttp: Http) {    
+  constructor(public authHttp: Http) {
   }
 
   /**
@@ -29,7 +29,7 @@ export class CommonProvider {
    * @param isJoinHost 是否合并到主机地址
    */
   get(url: string, isJoinHost: boolean = true) {
-    url = (isJoinHost && url.indexOf('http') <0) ?  ConfigProvider.getApiHost() + encodeURI(url) : encodeURI(url);
+    url = (isJoinHost && url.indexOf('http') < 0) ? ConfigProvider.getApiHost() + encodeURI(url) : encodeURI(url);
     return this.authHttp.get(url)
       .timeout(60000)
       .toPromise()
@@ -52,9 +52,9 @@ export class CommonProvider {
       .catch(resp => this.handleHttpError(resp));
   }
 
- /**
- * 处理http错误
- */
+  /**
+  * 处理http错误
+  */
   handleHttpError(resp): IResponseData<any> {
     let errMsg = '抱歉，后台服务出错了';
     if (resp) {
@@ -70,6 +70,6 @@ export class CommonProvider {
         }
       }
     }
-    return { success: false, msg: errMsg, code: -1, result: null};
+    return { success: false, msg: errMsg, code: -1, result: null };
   }
 }

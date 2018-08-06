@@ -14,8 +14,8 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  private username: string = 'good';
-  private password: string = '0000';
+  private username: string = '';
+  private password: string = '';
   constructor(public navCtrl: NavController, private http: Http, public toastCtrl: ToastController, public loadingCtrl: LoadingController, private storage: Storage) {
 
   }

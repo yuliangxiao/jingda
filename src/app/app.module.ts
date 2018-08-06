@@ -33,6 +33,9 @@ import { CommonProvider } from '../providers/common/common';
 import { ConfigProvider } from '../providers/config/config';
 import { CacheProvider } from '../providers/cache/cache';
 
+import{SendcarPageModule} from '../pages/sendcar/sendcar.module'
+import{SendcardetailedPageModule} from '../pages/sendcardetailed/sendcardetailed.module'
+
 @NgModule({
   declarations: [
     MyApp,
@@ -57,7 +60,9 @@ import { CacheProvider } from '../providers/cache/cache';
       backButtonText: '返回',
       iconMode: 'ios',
       mode: 'ios'
-    })
+    }),
+    SendcarPageModule,
+    SendcardetailedPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
