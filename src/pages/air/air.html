@@ -31,11 +31,11 @@
                 <label>{{item.CorpCN}}</label>
             </ion-col>
             <ion-col class="row_title_last">
-                <span class="span_status" *ngIf="item.CusStatus==1">新委托</span>
-                <span class="span_status" *ngIf="item.CusStatus==2">已收取</span>
-                <span class="span_status" *ngIf="item.CusStatus==3" style="background: green">已申报</span>
-                <span class="span_status" *ngIf="item.CusStatus==4" style="background: green">已验货</span>
-                <span class="span_status" *ngIf="item.CusStatus==5" style="background: green">已通关</span>
+                <span class="span_status" *ngIf="item.StgStatus==1">新委托</span>
+                <span class="span_status" *ngIf="item.StgStatus==2">计划完成</span>
+                <span class="span_status" *ngIf="item.StgStatus==3" style="background: green">已收货</span>
+                <span class="span_status" *ngIf="item.StgStatus==4" style="background: green">已放行</span>
+                <span class="span_status" *ngIf="item.StgStatus==5" style="background: green">入货完成</span>
             </ion-col>
         </ion-row>
         <ion-row class="border-top">
@@ -49,11 +49,11 @@
             </ion-item>
             <ion-item>
                 航班号/班期:
-                <ion-note item-end>{{item.Vsl}}/{{item.PreDeliverTime | date:'yyyy-MM-dd'}}</ion-note>
+                <ion-note item-end>{{item.Voy}}/{{item.ETD | date:'yyyy-MM-dd'}}</ion-note>
             </ion-item>
             <ion-item>
                 货物信息:
-                <ion-note item-end>20GP*1</ion-note>
+                <ion-note item-end>{{item.GoodsCN}}</ion-note>
             </ion-item>
         </ion-row>
     </ion-card>

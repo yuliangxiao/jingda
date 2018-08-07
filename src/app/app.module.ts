@@ -33,10 +33,10 @@ import { CommonProvider } from '../providers/common/common';
 import { ConfigProvider } from '../providers/config/config';
 import { CacheProvider } from '../providers/cache/cache';
 
-import{SendcarPageModule} from '../pages/sendcar/sendcar.module'
-import{AirPageModule} from '../pages/air/air.module'
-import{SendcardetailedPageModule} from '../pages/sendcardetailed/sendcardetailed.module'
-import { ActionSheet,Loading } from '../providers/tips/tips';
+import { SendcarPageModule } from '../pages/sendcar/sendcar.module'
+import { AirPageModule } from '../pages/air/air.module'
+import { SendcardetailedPageModule } from '../pages/sendcardetailed/sendcardetailed.module'
+import { ActionSheet, Loading, Confirm, Toast } from '../providers/tips/tips';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,7 @@ import { ActionSheet,Loading } from '../providers/tips/tips';
     LoginPage,
     BasicFeePage,
     DeclaredetailedPage
-    
+
   ],
   imports: [
     BrowserModule,
@@ -81,7 +81,7 @@ import { ActionSheet,Loading } from '../providers/tips/tips';
     LoginPage,
     DeclarePage,
     BasicFeePage,
-   
+
     SearchPage,
     DeclaredetailedPage
   ],
@@ -102,7 +102,9 @@ import { ActionSheet,Loading } from '../providers/tips/tips';
     ConfigProvider,
     CacheProvider,
     ActionSheet,
-    Loading
+    Loading,
+    Confirm,
+    Toast
   ]
 })
 export class AppModule { }

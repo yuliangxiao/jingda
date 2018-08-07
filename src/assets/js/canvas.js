@@ -1,6 +1,7 @@
 var clientWidth = 0;
 var clientHeight = 0;
 var canvas_top = null;
+var bool = true;
 
 function canvas_start() {
     new lineCanvas({
@@ -13,6 +14,7 @@ function canvas_start() {
 }
 
 function clearEl() {
+    bool = true;
     canvas_top.getContext("2d").clearRect(0, 0, clientWidth, clientHeight);
 }
 
@@ -42,10 +44,9 @@ function lineCanvas(obj) {
     this.cxt.lineCap = "round";
     let start_y = 0;
     let start_x = 20;
-    let bool = true;
+
     //开始绘制
     this.canvas.addEventListener("touchstart", function(e) {
-        // alert(345);
         document.getElementsByClassName('scroll-content')[3].style.overflow = "hidden";
         this.cxt.beginPath();
         if (bool) {
@@ -62,21 +63,7 @@ function lineCanvas(obj) {
     }.bind(this), false);
     //结束绘制
     this.canvas.addEventListener("touchend", function() {
-        // alert(123);
         document.getElementsByClassName('scroll-content')[3].style.overflow = "scroll";
         this.cxt.closePath();
     }.bind(this), false);
-    // document.getElementsByClassName('scroll-content')[3].onscroll = function() {
-    //         console.log(isDragging);
-    //         if (isDragging) {
-    //             console.log(4);
-    //             return false;
-    //         }
-    //         console.log(5);
-    //     }
-    //保存图片，直接转base64
-    // this.saveEl.addEventListener("click", function() {
-    //     var imgBase64 = this.canvas.toDataURL();
-    //     console.log(imgBase64);
-    // }.bind(this), false);
 };
