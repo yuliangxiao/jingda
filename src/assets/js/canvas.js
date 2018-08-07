@@ -43,25 +43,26 @@ function lineCanvas(obj) {
     let start_y = 0;
     let start_x = 20;
     let bool = true;
-    var isDragging = false
-        //开始绘制
+    //开始绘制
     this.canvas.addEventListener("touchstart", function(e) {
+        // alert(345);
         document.getElementsByClassName('scroll-content')[3].style.overflow = "hidden";
         this.cxt.beginPath();
         if (bool) {
-            start_y = e.changedTouches[0].pageY;
+            start_y = e.changedTouches[0].pageY - 40;
             bool = false;
         }
         this.cxt.moveTo(e.changedTouches[0].pageX - start_x, e.changedTouches[0].pageY - start_y);
     }.bind(this), false);
     //绘制中
     this.canvas.addEventListener("touchmove", function(e) {
-        isDragging = true;
+        document.getElementsByClassName('scroll-content')[3].style.overflow = "hidden";
         this.cxt.lineTo(e.changedTouches[0].pageX - start_x, e.changedTouches[0].pageY - start_y);
         this.cxt.stroke();
     }.bind(this), false);
     //结束绘制
     this.canvas.addEventListener("touchend", function() {
+        // alert(123);
         document.getElementsByClassName('scroll-content')[3].style.overflow = "scroll";
         this.cxt.closePath();
     }.bind(this), false);

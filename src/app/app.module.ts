@@ -34,7 +34,9 @@ import { ConfigProvider } from '../providers/config/config';
 import { CacheProvider } from '../providers/cache/cache';
 
 import{SendcarPageModule} from '../pages/sendcar/sendcar.module'
+import{AirPageModule} from '../pages/air/air.module'
 import{SendcardetailedPageModule} from '../pages/sendcardetailed/sendcardetailed.module'
+import { ActionSheet,Loading } from '../providers/tips/tips';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import{SendcardetailedPageModule} from '../pages/sendcardetailed/sendcardetailed
     LoginPage,
     BasicFeePage,
     DeclaredetailedPage
+    
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ import{SendcardetailedPageModule} from '../pages/sendcardetailed/sendcardetailed
       mode: 'ios'
     }),
     SendcarPageModule,
-    SendcardetailedPageModule
+    SendcardetailedPageModule,
+    AirPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -77,6 +81,7 @@ import{SendcardetailedPageModule} from '../pages/sendcardetailed/sendcardetailed
     LoginPage,
     DeclarePage,
     BasicFeePage,
+   
     SearchPage,
     DeclaredetailedPage
   ],
@@ -95,7 +100,9 @@ import{SendcardetailedPageModule} from '../pages/sendcardetailed/sendcardetailed
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     CommonProvider,
     ConfigProvider,
-    CacheProvider
+    CacheProvider,
+    ActionSheet,
+    Loading
   ]
 })
 export class AppModule { }

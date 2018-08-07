@@ -4,6 +4,7 @@ import { AboutPage } from '../about/about';
 import { DeclaredetailedPage } from '../declaredetailed/declaredetailed';
 import { TallyPage } from '../tally/tally';
 import { LoginPage } from '../login/login';
+import { AirPage } from '../air/air';
 import { DetailedPage } from './detailed';
 import { Storage } from '@ionic/storage';
 
@@ -80,5 +81,8 @@ export class HomePage {
   }
   go_detailed() {
     this.navCtrl.push(DetailedPage);
+  }
+  go_air() {
+    this.navCtrl.push(AirPage);
   }
 }
