@@ -12,7 +12,7 @@ export class AboutPage {
 
   }
   GoNew(title) {
-    this.navCtrl.push(ContactPage, { title: title });
+    this.navCtrl.push(ContactPage, { title: title, BLID: 0 });
   }
   go_sendcar() {
     this.navCtrl.push(SendcarPage);

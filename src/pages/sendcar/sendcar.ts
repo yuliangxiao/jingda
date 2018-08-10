@@ -4,6 +4,8 @@ import { AlertController, LoadingController, ModalController, ToastController, A
 import { Http } from '@angular/http';
 import { SearchPage } from './search';
 import { server } from '../../assets/js/server_path'
+import { ContactPage } from '../contact/contact';
+
 
 import { ShowToast, ShowActionSheet, Loading } from '../../assets/js/common'
 import { SendcardetailedPage } from '../sendcardetailed/sendcardetailed'
@@ -52,6 +54,7 @@ export class SendcarPage {
     }
 
   }
+
   request_url() {
     this.is_loading = true;
     this.http.request(server + 'GetDispatchedCar')
@@ -100,26 +103,28 @@ export class SendcarPage {
     loading.dismiss();
   }
   pressEvent(BLID: number) {
-    let btn_arr = ['已收取', '已申报', '已验货', '已通关'];
+    // let btn_arr = ['已收取', '已申报', '已验货', '已通关','跳转拍照'];
+    let btn_arr = ['跳转拍照'];
     new ShowActionSheet(this.actionSheetCtrl).presentActionSheet('选择状态', btn_arr, (res_str: string) => {
-      let loading = this.loadingCtrl.create({
-        content: '请等待'
-      });
-      loading.present();
-      console.log(res_str);
-      // this.http.request(server + `ChangeBLStatus?BLID=${BLID}&&Status=${res_str}&&sheetname=${this.sheetname}`)
-      //   .toPromise()
-      //   .then(res => {
-      //     if (res.json().status == 0) {
-      //       this.items = [];
-      //       this.request_url();
-      //     }
-      //     else {
-      //       new ShowToast(this.toastCtrl).presentToast(res.json().msg);
-      //     }
-      //     loading.dismiss();
-      //   })
-      //   .catch(err => { console.error(err); loading.dismiss(); });
+      // let loading = this.loadingCtrl.create({
+      //   content: '请等待'
+      // });
+      // loading.present();
+      this.navCtrl.push(ContactPage, { title: '跳转拍照', BLID: BLID });
+    //   this.http.request(server + `ChangeBLStatus?BLID=${BLID}&&Status=${res_str}&&sheetname=${this.sheetname}`)
+    //     .toPromise()
+    //     .then(res => {
+    //       if (res.json().status == 0) {
+    //         this.items = [];
+    //         this.request_url();
+    //       }
+    //       else {
+    //         new ShowToast(this.toastCtrl).presentToast(res.json().msg);
+    //       }
+    //       loading.dismiss();
+    //     })
+    //     .catch(err => { console.error(err); loading.dismiss(); });
+    // });
     });
   }
 }

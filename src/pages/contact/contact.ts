@@ -41,8 +41,12 @@ export class ContactPage {
     // private geolocation: Geolocation,
     private imagePicker: ImagePicker) {
     this.params = this.navParams.get('title');
+
     new ShowToast(this.toastCtrl).presentToast('请打开GPS准确定位');
-    this.blid = 0;
+    this.blid = <number>this.navParams.get('BLID');
+    if (this.blid != 0) {
+      this.Get_BLNO();
+    }
   }
 
   switchType() {
@@ -55,6 +59,15 @@ export class ContactPage {
         }
         this.input_txt = res.json()[0].BLNo;
         this.blid = res.json()[0].BLID;
+      })
+      .catch(err => { console.error(err) });
+  }
+
+  Get_BLNO() {
+    this.http.request(server + 'GetBLNoByBLID?id=' + this.blid)
+      .toPromise()
+      .then(res => {
+        this.input_txt = res.json()[0].BLNo;
       })
       .catch(err => { console.error(err) });
   }

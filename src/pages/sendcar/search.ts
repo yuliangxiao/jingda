@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, NavParams } from 'ionic-angular';
-
+import { ActionSheet, Loading, Confirm, Toast } from '../../providers/tips/tips'
 @Component({
     selector: 'page-search',
     templateUrl: 'search.html'
@@ -17,7 +17,7 @@ export class SearchPage {
     private param8: boolean = false;
     private param9: boolean = false;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private actionSheet: ActionSheet) {
 
     }
     dismiss() {
@@ -42,4 +42,5 @@ export class SearchPage {
         }
         return param;
     }
+  
 }
