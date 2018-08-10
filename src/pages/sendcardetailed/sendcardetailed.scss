@@ -64,5 +64,8 @@ page-sendcardetailed {
             margin-right: 2%;
             margin-bottom: 10px;
         }
+        .list-ios>.item-block:last-child {
+            border-bottom: 0 !important;
+        }
     }
 }

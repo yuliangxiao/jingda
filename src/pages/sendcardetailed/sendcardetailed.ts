@@ -19,6 +19,7 @@ import { ShowToast, Loading } from '../../assets/js/common'
 export class SendcardetailedPage {
   private BLID: number = 0;
   private DataObj: DataClass;
+  private Is_Display = false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -27,6 +28,9 @@ export class SendcardetailedPage {
     public toastCtrl: ToastController) {
     this.BLID = this.navParams.get('BLID');
     this.DataObj = this.navParams.get('DataObj');
+    if (this.DataObj.SignImg == null) {
+      this.Is_Display = true;
+    }
   }
 
   ionViewDidLoad() {
@@ -44,7 +48,7 @@ export class SendcardetailedPage {
       async: false,
       data: { img: respImg(), BLID: this.BLID },
       success: function () {
-       
+
       },
       error: function () {
         console.log("error");
@@ -70,4 +74,5 @@ class DataClass {
   DeliverTime;
   CarNo;
   CurrDate;
+  SignImg;
 }

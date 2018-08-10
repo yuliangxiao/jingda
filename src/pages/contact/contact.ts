@@ -10,7 +10,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { server } from '../../assets/js/server_path';
 import { Loading, Confirm, ShowToast } from '../../assets/js/common';
 import { BasicFeePage } from './basic_fee';
-import { Geolocation } from '@ionic-native/geolocation';
+// import { Geolocation } from '@ionic-native/geolocation';
 
 
 
@@ -38,7 +38,7 @@ export class ContactPage {
     public loadingCtrl: LoadingController,
     public modalCtrl: ModalController,
     public toastCtrl: ToastController,
-    private geolocation: Geolocation,
+    // private geolocation: Geolocation,
     private imagePicker: ImagePicker) {
     this.params = this.navParams.get('title');
     new ShowToast(this.toastCtrl).presentToast('请打开GPS准确定位');
@@ -88,18 +88,18 @@ export class ContactPage {
     });
     alert.present();
   }
-  getGPS() {
-    this.geolocation.getCurrentPosition().then((resp) => {
+  // getGPS() {
+  //   this.geolocation.getCurrentPosition().then((resp) => {
 
-      console.log('GPS定位：您的位置是 ' + resp.coords.longitude + ',' + resp.coords.latitude);
+  //     console.log('GPS定位：您的位置是 ' + resp.coords.longitude + ',' + resp.coords.latitude);
 
-    }).catch(e => {
+  //   }).catch(e => {
 
-      console.log('Error happened when get current position.');
+  //     console.log('Error happened when get current position.');
 
-    });
+  //   });
 
-  }
+  // }
   sub_order() {
     if (this.blid == 0) {
       this.showAlert(1, "请选择单子!");

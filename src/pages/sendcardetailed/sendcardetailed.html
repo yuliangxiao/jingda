@@ -13,9 +13,9 @@
 </ion-header>
 <ion-content>
     <ion-fab right bottom>
-        <button ion-fab color="secondary"><ion-icon name="arrow-dropup-circle"></ion-icon></button>
+        <button ion-fab color="secondary"><ion-icon name="keypad"></ion-icon></button>
         <ion-fab-list side="top">
-            <button ion-fab color="primary" (click)="cleanCanvas()"><ion-icon name="help-circle"></ion-icon></button>
+            <button ion-fab color="primary" (click)="cleanCanvas()"><ion-icon name="close-circle"></ion-icon></button>
         </ion-fab-list>
     </ion-fab>
     <ion-card>
@@ -62,19 +62,19 @@
         </ion-card-header>
         <ion-card-content>
             <ion-list>
-                <ion-item>
+                <ion-item *ngIf="DataObj.TradeType!=2">
                     提货地址
                     <ion-note item-end>{{DataObj.PickupPlace}}</ion-note>
                 </ion-item>
-                <ion-item>
+                <ion-item *ngIf="DataObj.TradeType!=2">
                     要求送达时间
                     <ion-note item-end>{{DataObj.PickupTime| date:'yyyy-MM-dd'}}</ion-note>
                 </ion-item>
-                <ion-item>
+                <ion-item *ngIf="DataObj.TradeType!=1">
                     送货地址
                     <ion-note item-end>{{DataObj.DeliverPlace}}</ion-note>
                 </ion-item>
-                <ion-item>
+                <ion-item *ngIf="DataObj.TradeType!=1">
                     要求送达时间
                     <ion-note item-end>{{DataObj.DeliverTime| date:'yyyy-MM-dd'}}</ion-note>
                 </ion-item>
@@ -96,10 +96,11 @@
             交货签字
         </ion-card-header>
         <ion-card-content style="height: 250px">
-            <div id="canvas"></div>
+            <div id="canvas" [ngStyle]="{'display':Is_Display? 'block' : 'none' }"></div>
+            <img [ngStyle]="{'display':Is_Display? 'none' : 'block' }" src="{{DataObj.SignImg}}">
         </ion-card-content>
     </ion-card>
     <div padding>
-        <button ion-button class="button-block" large (click)="subOrder()">上传</button>
+        <button ion-button class="button-block" large (click)="subOrder()" [ngStyle]="{'display':Is_Display? 'block' : 'none' }">上传</button>
     </div>
 </ion-content>
