@@ -43,9 +43,13 @@
                 <ion-note item-end *ngIf="item.TradeType==1">进口</ion-note>
                 <ion-note item-end *ngIf="item.TradeType==2">出口</ion-note>
             </ion-item>
-            <ion-item>
+            <ion-item *ngIf="sheetname=='TAirBL'">
                 航线/班次:
-                <ion-note item-end>{{item.Vsl}}/{{item.Voy}}</ion-note>
+                <ion-note item-end>{{item.CarrierName}} {{item.Voy}}</ion-note>
+            </ion-item>
+            <ion-item *ngIf="sheetname=='TSeaBL'">
+                船名/航次:
+                <ion-note item-end>{{item.CarrierName}} {{item.Vsl}} {{item.Voy}}</ion-note>
             </ion-item>
             <ion-item>
                 业务日期:

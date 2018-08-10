@@ -27,6 +27,7 @@ export class DeclaredetailedPage {
   private param3: boolean;
   private param4: boolean;
   private param9: boolean;
+  private sheetnameparam: string = '';
   private sheetname: string = 'TSeaBL';
 
   constructor(public navCtrl: NavController,
@@ -67,7 +68,7 @@ export class DeclaredetailedPage {
   request_url() {
     this.is_loading = true;
     this.http.request(server + 'GetBLList?keyword=' + this.keyword + '&count=' + this.count + '&param1=' + this.param1 + '&param2=' + this.param2
-      + '&param3=' + this.param3 + '&param4=' + this.param4 + '&param9=' + this.param9 + '&sheetname=' + this.sheetname)
+      + '&param3=' + this.param3 + '&param4=' + this.param4 + '&param9=' + this.param9 + '&sheetname=' + this.sheetnameparam)
       .toPromise()
       .then(res => {
         if (res.json().length > 0) {
@@ -92,7 +93,13 @@ export class DeclaredetailedPage {
         this.param3 = data.param3;
         this.param4 = data.param4;
         this.param9 = data.param9;
-        this.sheetname = data.param5;
+        this.sheetnameparam = data.param5;
+        if (this.sheetnameparam == 'param7' || this.sheetnameparam == 'param8') {
+          this.sheetname = 'TAirBL';
+        }
+        else {
+          this.sheetname = 'TSeaBL';
+        }
         if (!this.is_loading) {
           this.items = [];
           this.count = 1;
@@ -109,7 +116,6 @@ export class DeclaredetailedPage {
         content: '请等待'
       });
       loading.present();
-      console.log(res_str);
       this.http.request(server + `ChangeBLStatus?BLID=${BLID}&&Status=${res_str}&&sheetname=${this.sheetname}`)
         .toPromise()
         .then(res => {
