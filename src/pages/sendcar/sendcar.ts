@@ -10,7 +10,8 @@ import { ContactPage } from '../contact/contact';
 import { ShowToast, ShowActionSheet, Loading } from '../../assets/js/common'
 import { SendcardetailedPage } from '../sendcardetailed/sendcardetailed'
 
-
+import { Storage } from '@ionic/storage';
+import { Toast } from '../../providers/tips/tips';
 import { CommonProvider, IResponseData } from '../../providers/common/common';
 /**
  * Generated class for the SendcarPage page.
@@ -29,6 +30,7 @@ export class SendcarPage {
   public is_first: boolean;
   public count: number = 1;
   private is_loading: boolean = false;
+  private username = "";
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private http: Http,
@@ -37,8 +39,12 @@ export class SendcarPage {
     public modalCtrl: ModalController,
     public toastCtrl: ToastController,
     public actionSheetCtrl: ActionSheetController,
-    public httpReq: CommonProvider) {
-
+    public httpReq: CommonProvider,
+    private toast: Toast,
+    private storage: Storage) {
+    storage.get('username').then((val) => {
+      this.username = val;
+    });
   }
 
   ionViewDidLoad() {
@@ -102,29 +108,50 @@ export class SendcarPage {
     });
     loading.dismiss();
   }
-  pressEvent(BLID: number) {
-    // let btn_arr = ['已收取', '已申报', '已验货', '已通关','跳转拍照'];
+  pressEvent(BLID: number, SrcBLID: number, TradeType: number) {
     let btn_arr = ['跳转拍照'];
+    switch (TradeType) {
+      case 1:
+        btn_arr = ['跳转拍照', '到达货场', '发车', '到达送货地', '驶离', '结束派送'];
+        break;
+      case 2:
+        btn_arr = ['跳转拍照', '发车', '到达提货地点', '驶离', '到达货场', '结束提货'];
+        break;
+    }
     new ShowActionSheet(this.actionSheetCtrl).presentActionSheet('选择状态', btn_arr, (res_str: string) => {
       // let loading = this.loadingCtrl.create({
       //   content: '请等待'
       // });
       // loading.present();
-      this.navCtrl.push(ContactPage, { title: '跳转拍照', BLID: BLID });
-    //   this.http.request(server + `ChangeBLStatus?BLID=${BLID}&&Status=${res_str}&&sheetname=${this.sheetname}`)
-    //     .toPromise()
-    //     .then(res => {
-    //       if (res.json().status == 0) {
-    //         this.items = [];
-    //         this.request_url();
-    //       }
-    //       else {
-    //         new ShowToast(this.toastCtrl).presentToast(res.json().msg);
-    //       }
-    //       loading.dismiss();
-    //     })
-    //     .catch(err => { console.error(err); loading.dismiss(); });
-    // });
+      if (res_str == "跳转拍照") {
+        this.navCtrl.push(ContactPage, { title: '跳转拍照', BLID: BLID });
+      }
+      else {
+        let loading = new Loading(this.loadingCtrl);
+        loading.loading('正在提交');
+        this.httpReq.post(server + 'AddTAirblStatus', {
+          BLID: SrcBLID,
+          Status: res_str,
+          UserName: this.username
+        }).then((res) => {
+          this.toast.show("成功");
+        });
+        loading.dismiss();
+      }
+      //   this.http.request(server + `ChangeBLStatus?BLID=${BLID}&&Status=${res_str}&&sheetname=${this.sheetname}`)
+      //     .toPromise()
+      //     .then(res => {
+      //       if (res.json().status == 0) {
+      //         this.items = [];
+      //         this.request_url();
+      //       }
+      //       else {
+      //         new ShowToast(this.toastCtrl).presentToast(res.json().msg);
+      //       }
+      //       loading.dismiss();
+      //     })
+      //     .catch(err => { console.error(err); loading.dismiss(); });
+      // });
     });
   }
 }
