@@ -35,6 +35,7 @@ export class LoginPage {
       .then(res => {
         if (res.json().status == 0) {
           this.storage.set('islogin', '0');
+          // this.storage.set('userid', '0');
           this.navCtrl.push(HomePage);
         }
         else {

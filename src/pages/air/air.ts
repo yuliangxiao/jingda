@@ -4,6 +4,7 @@ import { server } from '../../assets/js/server_path'
 import { CommonProvider } from '../../providers/common/common';
 import { ActionSheet, Loading, Confirm, Toast } from '../../providers/tips/tips'
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Pieceweightruler } from './pieceweightruler'
 
 /**
  * Generated class for the AirPage page.
@@ -68,47 +69,52 @@ export class AirPage {
     });
   }
   EntryInput(BLID: number) {
-    const prompt = this.alertCtrl.create({
-      title: '录入信息',
-      message: "请录入件重尺信息",
-      inputs: [
-        {
-          name: 'Pkgs',
-          placeholder: '件数'
-        },
-        {
-          name: 'GrossWeight',
-          placeholder: '重量'
-        },
-        {
-          name: 'Volume',
-          placeholder: '尺码'
-        },
-      ],
-      buttons: [
-        {
-          text: '取消',
-          handler: data => {
-          }
-        },
-        {
-          text: '保存',
-          handler: data => {
-            this.loading.show();
-            this.httpReq.post(server + 'EntryInput', Object.assign(data, {
-              BLID: BLID
-            })).then((res) => {
-              this.loading.dismiss();
-              this.toast.show('保存成功');
-            }).catch((reserr) => {
-              this.loading.dismiss();
-              this.toast.show('保存失败');
-            });
-          }
-        }
-      ]
+    this.httpReq.get(server + 'GetTAirBLGoodsList?BLID=' + BLID).then((res) => {
+      this.navCtrl.push(Pieceweightruler, { items: res });
     });
-    prompt.present();
+
+
+    // const prompt = this.alertCtrl.create({
+    //   title: '录入信息',
+    //   message: "请录入件重尺信息",
+    //   inputs: [
+    //     {
+    //       name: 'Pkgs',
+    //       placeholder: '件数'
+    //     },
+    //     {
+    //       name: 'GrossWeight',
+    //       placeholder: '重量'
+    //     },
+    //     {
+    //       name: 'Volume',
+    //       placeholder: '尺码'
+    //     },
+    //   ],
+    //   buttons: [
+    //     {
+    //       text: '取消',
+    //       handler: data => {
+    //       }
+    //     },
+    //     {
+    //       text: '保存',
+    //       handler: data => {
+    //         this.loading.show();
+    //         this.httpReq.post(server + 'EntryInput', Object.assign(data, {
+    //           BLID: BLID
+    //         })).then((res) => {
+    //           this.loading.dismiss();
+    //           this.toast.show('保存成功');
+    //         }).catch((reserr) => {
+    //           this.loading.dismiss();
+    //           this.toast.show('保存失败');
+    //         });
+    //       }
+    //     }
+    //   ]
+    // });
+    // prompt.present();
   }
   openCamera(BLID: number) {
     const options: CameraOptions = {

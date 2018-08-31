@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            补全件重尺
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-item-group *ngFor="let item of items">
+        <ion-item-divider color="light" *ngIf="item.GoodsType==1">重货</ion-item-divider>
+        <ion-item-divider color="light" *ngIf="item.GoodsType==2">泡货</ion-item-divider>
+        <ion-item>
+            <ion-label>件数</ion-label>
+            <ion-input type="number" [(ngModel)]="item.Qty" pattern="[0-9]*"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>重量</ion-label>
+            <ion-input type="number" [(ngModel)]="item.GrossWeight" pattern="[0-9]*"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>尺码</ion-label>
+            <ion-input type="number" [(ngModel)]="item.Volume" pattern="[0-9]*"></ion-input>
+        </ion-item>
+    </ion-item-group>
+    <div padding>
+        <button ion-button block (click)="sure()">确&nbsp;&nbsp;定</button>
+    </div>
+</ion-content>

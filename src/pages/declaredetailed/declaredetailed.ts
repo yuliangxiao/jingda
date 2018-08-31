@@ -5,6 +5,7 @@ import { Http } from '@angular/http';
 import { AlertController, LoadingController, ModalController, ToastController, ActionSheetController } from 'ionic-angular';
 
 import { SearchPage } from './search';
+
 import { server } from '../../assets/js/server_path'
 
 import { ShowToast, ShowActionSheet } from '../../assets/js/common'

@@ -1,10 +1,5 @@
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
 
-import { Headers, Http, RequestOptions } from '@angular/http';
+import {  Http, RequestOptions } from '@angular/http';
 
 import { ConfigProvider } from '../config/config';
 import { Injectable } from '@angular/core';
