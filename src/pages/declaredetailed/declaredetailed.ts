@@ -9,6 +9,7 @@ import { SearchPage } from './search';
 import { server } from '../../assets/js/server_path'
 
 import { ShowToast, ShowActionSheet } from '../../assets/js/common'
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -31,6 +32,8 @@ export class DeclaredetailedPage {
   private sheetnameparam: string = '';
   private sheetname: string = 'TSeaBL';
 
+  private username = "";
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private http: Http,
@@ -38,10 +41,15 @@ export class DeclaredetailedPage {
     public loadingCtrl: LoadingController,
     public modalCtrl: ModalController,
     public toastCtrl: ToastController,
-    public actionSheetCtrl: ActionSheetController) {
+    public actionSheetCtrl: ActionSheetController,
+    private storage: Storage) {
 
     this.is_first = false;
     this.request_url();
+
+    storage.get('username').then((val) => {
+      this.username = val;
+    });
 
   }
 
@@ -117,7 +125,9 @@ export class DeclaredetailedPage {
         content: '请等待'
       });
       loading.present();
-      this.http.request(server + `ChangeBLStatus?BLID=${BLID}&&Status=${res_str}&&sheetname=${this.sheetname}`)
+
+
+      this.http.request(server + `ChangeBLStatus?BLID=${BLID}&&Status=${res_str}&&sheetname=${this.sheetname}&&username=${this.username}`)
         .toPromise()
         .then(res => {
           if (res.json().status == 0) {
