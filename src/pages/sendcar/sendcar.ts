@@ -98,12 +98,14 @@ export class SendcarPage {
     });
     profileModal.present();
   }
-  goNews(BLID) {
+  goNews(BLID, SrcBLID) {
     let loading = new Loading(this.loadingCtrl);
     loading.loading('正在加载');
     this.httpReq.get(server + 'GetCarDetailed?BLID=' + BLID).then((res) => {
-      this.navCtrl.push(SendcardetailedPage, {
-        BLID: BLID, DataObj: res[0]
+      this.httpReq.get(server + 'GetCarDetailedGoodsList?BLID=' + SrcBLID).then((res_list) => {
+        this.navCtrl.push(SendcardetailedPage, {
+          BLID: BLID, DataObj: res[0], GoodsList: res_list, SrcBLID: SrcBLID
+        });
       });
     });
     loading.dismiss();

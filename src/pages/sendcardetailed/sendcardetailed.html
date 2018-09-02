@@ -53,7 +53,38 @@
                     件重尺
                     <ion-note item-end>{{DataObj.Qty}}/{{DataObj.Weight}}/{{DataObj.Volume}}</ion-note>
                 </ion-item>
+                <ion-item>
+                    <ion-label>有破损</ion-label>
+                    <ion-toggle [(ngModel)]="IsHaveBad"></ion-toggle>
+                </ion-item>
+                <ion-item>
+                    <ion-label>有水湿</ion-label>
+                    <ion-toggle [(ngModel)]="IsHaveWet"></ion-toggle>
+                </ion-item>
             </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            货物信息(明细)
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item-group *ngFor="let item of GoodsList">
+                <ion-item-divider color="light" *ngIf="item.GoodsType==1">重货</ion-item-divider>
+                <ion-item-divider color="light" *ngIf="item.GoodsType==2">泡货</ion-item-divider>
+                <ion-item>
+                    件数
+                    <ion-note item-end>{{item.Qty}}</ion-note>
+                </ion-item>
+                <ion-item>
+                    <ion-label>重量</ion-label>
+                    <ion-note item-end>{{item.GrossWeight}}</ion-note>
+                </ion-item>
+                <ion-item>
+                    <ion-label>尺码</ion-label>
+                    <ion-note item-end> {{item.Volume}}</ion-note>
+                </ion-item>
+            </ion-item-group>
         </ion-card-content>
     </ion-card>
     <ion-card>

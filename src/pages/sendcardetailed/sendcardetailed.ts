@@ -20,7 +20,10 @@ export class SendcardetailedPage {
   private BLID: number = 0;
   private DataObj: DataClass;
   private Is_Display = false;
-
+  private GoodsList: any;
+  private IsHaveBad = false;
+  private IsHaveWet = false;
+  private SrcBLID: number;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public httpReq: CommonProvider,
@@ -28,6 +31,10 @@ export class SendcardetailedPage {
     public toastCtrl: ToastController) {
     this.BLID = this.navParams.get('BLID');
     this.DataObj = this.navParams.get('DataObj');
+    this.GoodsList = this.navParams.get('GoodsList');
+    this.SrcBLID = this.navParams.get('SrcBLID');
+    this.IsHaveBad = this.DataObj.IsHaveBad == 1 ? true : false;
+    this.IsHaveWet = this.DataObj.IsHaveWet == 1 ? true : false;
     if (this.DataObj.SignImg == null) {
       this.Is_Display = true;
     }
@@ -46,7 +53,7 @@ export class SendcardetailedPage {
       url: server + 'ChangeCarDetailed',
       type: 'post',
       async: false,
-      data: { img: respImg(), BLID: this.BLID },
+      data: { img: respImg(), BLID: this.BLID, SrcBLID: this.SrcBLID, IsHaveBad: this.IsHaveBad ? 1 : 0, IsHaveWet: this.IsHaveWet ? 1 : 0 },
       success: function () {
 
       },
@@ -75,4 +82,6 @@ class DataClass {
   CarNo;
   CurrDate;
   SignImg;
+  IsHaveBad;
+  IsHaveWet;
 }

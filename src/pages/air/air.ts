@@ -5,6 +5,9 @@ import { CommonProvider } from '../../providers/common/common';
 import { ActionSheet, Loading, Confirm, Toast } from '../../providers/tips/tips'
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Pieceweightruler } from './pieceweightruler'
+import { CacheKeys, CacheProvider } from '../../providers/cache/cache'
+import { Storage } from '@ionic/storage';
+
 
 /**
  * Generated class for the AirPage page.
@@ -22,7 +25,7 @@ import { Pieceweightruler } from './pieceweightruler'
 
 export class AirPage {
   private items: any;
-
+  private username = "";
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private httpReq: CommonProvider,
@@ -31,8 +34,13 @@ export class AirPage {
     private alertCtrl: AlertController,
     private camera: Camera,
     private comfirm: Confirm,
-    private toast: Toast) {
-
+    private toast: Toast,
+    private cache: CacheProvider,
+    public storage: Storage) {
+    this.storage.get('username').then((val) => {
+      this.username = val;
+    });
+    //this.username = cache.GetStorageInfo(CacheKeys.username);
   }
   ionViewDidLoad() {
     this.request_url();
@@ -43,7 +51,7 @@ export class AirPage {
     });
   }
   pressEvent(BLID: number) {
-    let btn_arr = ['计划完成', '已收货', '已放行', '入货完成', '补全件重尺', '报告异常'];
+    let btn_arr = ['计划完成', '已收货', '已放行', '交接主单和随机文件', '补全件重尺', '报告异常'];
     this.actionSheet.show('选择操作', btn_arr, (res) => {
       // this.loading.show();
       switch (res) {
@@ -56,8 +64,8 @@ export class AirPage {
         case '已放行':
           this.Change_Status(BLID, 4, '已放行');
           break;
-        case '入货完成':
-          this.Change_Status(BLID, 6, '入货完成');
+        case '交接主单和随机文件':
+          this.Change_Status(BLID, 6, '交接主单和随机文件');
           break;
         case '补全件重尺':
           this.EntryInput(BLID);
@@ -172,7 +180,9 @@ export class AirPage {
         this.loading.show();
         this.httpReq.post(server + 'Change_TAir_Status', {
           BLID: BLID,
-          Status: Status
+          Status: Status,
+          Status_Str: Status_Str,
+          UserName: this.username
         }).then((res) => {
           this.loading.dismiss();
           this.toast.show('更改成功');
